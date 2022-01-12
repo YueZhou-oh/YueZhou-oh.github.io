@@ -409,6 +409,7 @@ input, select, textarea {
 
 		.row > .col-12 {
 			width: 100%;
+			margin-bottom: 5%;
 		}
 
 		.row > .off-12 {
@@ -2282,7 +2283,7 @@ input, select, textarea {
 /* Nav */
 
 	#nav {
-		position: absolute;
+		position: absolute;	/* position: fixed; */
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -2410,6 +2411,7 @@ input, select, textarea {
 	#banner {
 		background: #fff;
 		text-align: center;
+		/* padding: 4.5em 0 4.5em 0; */
 		padding: 4.5em 0 4.5em 0;
 		margin-bottom: 0;
 	}
