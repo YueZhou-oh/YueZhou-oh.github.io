@@ -5284,3 +5284,38 @@ a.credit {
 /* Common Style */
 .section {
   padding-bottom: 0; }
+
+/* Left Arrow   */
+.arrow-left {
+  width: 0;
+  height: 0;
+  border-bottom: 5px solid transparent; /* 下边框的高 */
+  border-top: 5px solid transparent; /* 上方边框的高 */
+  border-right: 5px solid gainsboro; /* 右边框的长度|宽度，以及背景色 */
+  font-size: 0;
+  line-height: 0;
+}
+
+
+/* 
+  display: inline-block;
+  position: relative;
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+  }
+.arrow-left::after{
+  display: inline-block;
+  content: " ";
+  height: 18rpx;
+  width: 18rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-color: #c7c7cc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 6rpx;
+  margin-top: -9rpx;
+}
+*/
