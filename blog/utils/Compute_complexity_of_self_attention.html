@@ -1,0 +1,2785 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+
+@import '';
+
+/*by 16soundsofsilence, yes this code is an absolute mess*/
+
+:root {
+  --bg-color: white;
+  --side-bar-bg-color: #f5f7f9;
+  --control-text-color: #3b454e;
+  --primary-color: #15ac8e;
+  --primary-btn-border-color: #15ac8e;
+  --active-file-bg-color: #e6ecf1;
+  --active-file-text-color: inherit;
+  --active-file-border-color: #15ac8e;
+  --item-hover-text-color: #242a31;
+  --item-hover-bg-color: #f5f7f9;
+  --window-border: 1px solid #e6ecf1;
+  --select-text-font-color: white;
+  --select-text-bg-color: #11977d;
+
+  --md-char-color: #9daab6;
+  --heading-char-color: #9daab6;
+  --meta-content-color: #15ac8e;
+
+  --borders: #e6ecf1;
+  --table-border-color: #e6ecf1;
+  --boxes: #f5f7f9;
+  --boxes-darker: #d8e0e7;
+  --boxes-darker2: #bac2c9;
+  --boxes-darkest: #9daab6;
+  --drag-placeholder-color: #d8e0e7;
+
+  --text-color: #3b454e;
+  --heading-text-color: #242a31;
+  --light-text-color: #9daab6;
+  --light-text-color-darker: #74818d;
+  --codeboxes: #183055;
+  --codeboxes-lighter: #1c375f;
+  --rawblock-edit-panel-bd: transparent;
+
+  --primary-color-darkest: #083d33;
+  --primary-color-darker2: #0d5748;
+  --primary-color-darker: #11977d;
+  --focus-ring-color: #15ac8e;
+
+  --danger-color: rgb(255, 70, 66);
+
+  --node-fill: #ececff;
+  --node-border: #ccccff;
+  --cluster-fill: #ffffde;
+  --cluster-border: #aaaa33;
+  --note-fill: #fff5ad;
+  --note-border: #aaaa33;
+
+  /*****************************/
+
+  --font-family: 'Roboto', sans-serif;
+  --code-font-family: 'Source Code Pro';
+  --monospace: 'Source Code Pro';
+}
+
+html,
+.form-control,
+.modal {
+  font-size: 16px;
+}
+
+body {
+  background: var(--bg-color);
+  font-family: var(--font-family);
+  font-weight: 400;
+  color: #3b454e;
+  line-height: 1.6rem;
+  height: 100%;
+}
+
+#write {
+  font-size: 0.95rem;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px;
+  padding-bottom: 100px;
+  position: static;
+  width: 100%;
+}
+
+#write > ul:first-child,
+#write > ol:first-child {
+  margin-top: 30px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none !important;
+  transition-duration: 0.2s;
+  transition-property: color;
+}
+
+a:hover {
+  color: var(--primary-color-darker);
+}
+
+mark a, mark .md-content.md-url {
+  color: var(--primary-color-darker2);
+}
+
+mark a:hover {
+  color: var(--primary-color-darkest);
+}
+
+
+.ty-preferences a {
+  color: var(--primary-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  color: var(--heading-text-color);
+  cursor: text;
+}
+
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+  text-decoration: none;
+}
+
+h1 tt,
+h1 code {
+  font-size: inherit;
+}
+
+h2 tt,
+h2 code {
+  font-size: inherit;
+}
+
+h3 tt,
+h3 code {
+  font-size: inherit;
+}
+
+h4 tt,
+h4 code {
+  font-size: inherit;
+}
+
+h5 tt,
+h5 code {
+  font-size: inherit;
+}
+
+h6 tt,
+h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 3rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.2rem;
+  border-bottom: solid 1px var(--borders);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+h6 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-top: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+#write > h1.md-focus:before,
+#write > h2.md-focus:before,
+#write > h3.md-focus:before,
+#write > h4.md-focus:before,
+#write > h5.md-focus:before,
+#write > h6.md-focus:before {
+  color: var(--light-text-color);
+  border: none;
+  position: absolute;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0px;
+  line-height: 1;
+}
+
+#write > h1.md-focus:before {
+  content: 'h1';
+  top: 1.1rem;
+  left: -1.75rem;
+}
+
+#write > h2.md-focus:before {
+  content: 'h2';
+  top: 0.6rem;
+  left: -1.75rem;
+}
+
+#write > h3.md-focus:before {
+  content: 'h3';
+  top: 0.4rem;
+  left: -1.75rem;
+}
+
+#write > h4.md-focus:before {
+  content: 'h4';
+  top: 0.3rem;
+  left: -1.75rem;
+}
+
+#write > h5.md-focus:before {
+  content: 'h5';
+  top: 0.2rem;
+  left: -1.75rem;
+}
+
+#write > h6.md-focus:before {
+  content: 'h6';
+  top: 0.2rem;
+  left: -1.75rem;
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child,
+blockquote h1,
+blockquote h2,
+blockquote h3,
+blockquote h4,
+blockquote h5,
+blockquote h6 {
+  margin-top: 0rem;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl {
+  margin: 0.5rem 0rem 1.5rem 0rem;
+}
+
+li > ol,
+li > ul {
+  margin: 0 0;
+}
+
+hr {
+  height: 2px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: var(--borders);
+  border: 0 none;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+li p.first {
+  display: inline-block;
+}
+
+ul,
+ol {
+  padding-left: 30px;
+}
+
+ul:first-child,
+ol:first-child {
+  margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+  margin-bottom: 0;
+}
+
+.md-blockmeta {
+  color: var(--md-char-color);
+}
+
+mark {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/*BLOCKQUOTE*/
+
+blockquote {
+  width: 100%;
+  background-color: var(--boxes);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 0.3rem;
+  padding: 1rem;
+}
+
+blockquote blockquote {
+  padding-right: 0;
+}
+
+/*TABLE*/
+
+table {
+  font-size: 0.875rem;
+  padding: 0;
+  margin: 1.5rem 0;
+  word-break: initial;
+}
+
+table tr {
+  border-top: 1px solid var(--borders);
+  border-bottom: 1px solid var(--borders);
+  margin: 0;
+  padding: 0;
+}
+
+table tr.md-end-block {
+  border-top: none;
+}
+
+table tbody tr:last-child {
+  border-bottom: none;
+}
+
+table tr th {
+  font-weight: bold;
+  border: none;
+  border-bottom: solid 2px var(--borders);
+  margin: 0;
+  padding: 10px 16px;
+  transition-duration: 0.3s;
+  transition-property: background-color;
+}
+
+table tr td {
+  border: none;
+  margin: 0;
+  padding: 10px 16px;
+  transition-duration: 0.3s;
+  transition-property: background-color;
+}
+
+#write table tr td:hover,
+#write table tr th:hover {
+  background-color: var(--boxes);
+}
+
+table tr th:first-child,
+table tr td:first-child {
+  margin-top: 0;
+}
+
+table tr th:last-child,
+table tr td:last-child {
+  margin-bottom: 0;
+}
+
+/*OTHER TABLE THINGS*/
+
+.ty-table-edit {
+  background-color: var(--boxes);
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  box-shadow: none;
+  transform: translateY(2.5rem);
+  transition-duration: 0.3s;
+  transition-property: opacity;
+}
+
+.ty-table-edit + .md-table {
+  margin-top: 3rem;
+}
+
+.ty-table-edit:active,
+.ty-table-edit:focus {
+  box-shadow: none;
+}
+
+.popover,
+.popover:active,
+.popover:focus {
+  border: solid 1px var(--borders);
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+  border-radius: 0.3rem;
+}
+
+.popover .arrow {
+  border-bottom-color: var(--borders);
+}
+
+.md-grid-board a {
+  background-color: transparent;
+  border-color: var(--borders);
+  border-radius: 2px;
+}
+
+.md-grid-board .md-grid-ext {
+  background-color: var(--borders);
+  border-radius: 2px;
+}
+
+.md-grid-board tr[row='1'] .md-grid-ext {
+  background: none;
+  border-radius: 6px;
+}
+
+.md-grid-board tr[row='1'] .md-grid-ext a {
+  background-color: var(--boxes-darker2);
+  border-color: var(--boxes-darker2);
+}
+
+.md-grid-board tr[row='1'] td {
+  background-color: var(--bg-color);
+  border-color: var(--borders);
+}
+
+.md-grid-board a.md-active, .md-grid-board a:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.md-grid-board tr[row='1'] a.md-active, .md-grid-board tr[row='1'] a:hover {
+  background-color: var(--primary-color-darker);
+  border-color: var(--primary-color-darker);
+}
+
+#md-grid-width,
+#md-grid-height {
+  border-radius: 0.3rem;
+  border-color: var(--borders);
+  transition-duration: 0.3s;
+  transition-property: border-color;
+}
+
+#md-grid-width:focus,
+#md-grid-height:focus {
+  border-radius: 0.3rem;
+  border-color: var(--primary-color);
+}
+
+/*CODE*/
+
+.CodeMirror {
+  padding: 1rem;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+  background-color: none;
+  border-right: none;
+  border-radius: 0px;
+  width: 2rem;
+  color: white;
+  height: 100%;
+  white-space: nowrap;
+}
+
+.cm-s-inner .CodeMirror-gutter-wrapper {
+  left: -2.75rem !important;
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
+  border-left: solid 2px var(--light-text-color-darker);
+}
+
+.CodeMirror.cm-s-typora-default .CodeMirror-activeline-background {
+  background-color: var(--codeboxes-lighter);
+}
+
+.cm-s-inner .CodeMirror-cursor {
+  color: white;
+  border-left: solid 1px white;
+}
+
+.CodeMirror-linenumber {
+  color: var(--bg-color);
+  opacity: 0.6;
+  width: 1.9532rem !important /*required*/;
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line > span::selection,
+.cm-s-inner .CodeMirror-line > span::-moz-selection,
+.cm-s-inner .CodeMirror-line > span > span::selection,
+.cm-s-inner .CodeMirror-line > span > span::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cm-error {
+  color: var(--danger-color);
+}
+
+.cm-s-inner span.cm-comment,
+.cm-s-typora-default span.cm-comment,
+.cm-s-typora-default span.cm-code {
+  color: #9daab6;
+}
+
+.cm-s-inner span.cm-string,
+.cm-s-inner span.cm-string-2 {
+  color: #71a7ff;
+}
+
+.cm-s-inner span.cm-number {
+  color: #ff9d3d;
+}
+
+.cm-s-inner span.cm-variable,
+.cm-s-inner span.cm-variable-2 {
+  color: white;
+}
+
+.cm-s-inner span.cm-def {
+  color: white;
+}
+
+.cm-s-inner span.cm-operator {
+  color: #ff9d3d;
+}
+
+.cm-s-inner span.cm-keyword {
+  color: #61e3a5;
+}
+
+.cm-s-inner span.cm-atom {
+  color: #bd93f9;
+}
+
+.cm-s-inner span.cm-meta {
+  color: #f8f8f2;
+}
+
+.cm-s-inner span.cm-link,
+.cm-s-typora-default .cm-link {
+  color: var(--primary-color);
+}
+
+.cm-s-inner span.cm-tag,
+.cm-s-inner .cm-header {
+  color: #b4f6d6;
+}
+
+.cm-s-inner span.cm-attribute {
+  color: #ff9d3d;
+}
+
+.cm-s-inner span.cm-qualifier,
+.cm-s-inner span.cm-type,
+.cm-s-inner span.cm-variable-3 {
+  color: #82ee9d;
+}
+
+.cm-s-inner span.cm-property {
+  color: #ffd6ad;
+}
+
+.cm-s-inner span.cm-builtin {
+  color: #8ffaaa;
+}
+
+.md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+  background: none;
+}
+
+.cm-s-inner .CodeMirror-selected,
+.cm-s-inner .CodeMirror-selectedtext {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cm-s-typora-default .cm-header,
+.cm-s-typora-default .cm-property {
+  color: white;
+  font-weight: 400;
+}
+
+.md-fences .code-tooltip {
+  box-shadow: rgba(116, 129, 141, 0.08) 0px 2px 6px 0px;
+  border: solid 1px var(--borders);
+  border-radius: 0.3rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  width: 15rem;
+  height: 2.5rem;
+  bottom: -3rem;
+  padding: 0.1875rem;
+}
+
+.md-fences .code-tooltip .ty-input {
+  border: solid 1px var(--borders);
+  height: 2rem;
+  line-height: 2rem;
+  margin: 0rem;
+  padding-left: 0.5rem !important;
+  text-align: left;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-family);
+  transition-duration: 0.3s;
+  transition-property: border;
+}
+
+.md-fences .code-tooltip .ty-input:focus {
+  border-color: var(--primary-color);
+}
+
+.html-for-mac .ty-cm-lang-input:empty:after {
+  left: 0.5rem;
+}
+
+.autoComplt-list li,
+.fences-auto-suggest li {
+  font-weight: 500;
+  transition-duration: 0.3s;
+  transition-property: background-color, color;
+}
+
+.autoComplt-list li.active,
+.fences-auto-suggest li:hover {
+  background-color: var(--boxes);
+  color: var(--primary-color);
+}
+
+.md-fences,
+tt {
+  border-radius: 0.3rem;
+  color: #ffffff;
+  padding: 1.5rem;
+  font-size: 0.8rem;
+}
+
+code {
+  padding: 0.2rem 0.4rem;
+  background-color: var(--borders);
+  font-size: 0.9rem;
+  border-radius: 0.2rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.md-fences .CodeMirror div.CodeMirror-cursor,
+#typora-source div.CodeMirror-cursor {
+  border-left: solid 1px white;
+}
+
+.md-fences {
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  background-color: var(--codeboxes);
+}
+
+#typora-source {
+  background-color: var(--codeboxes);
+  color: white;
+  font-size: 0.9rem;
+}
+
+/*DIAGRAMS*/
+
+.md-diagram-panel {
+  color: var(--text-color);
+  border: solid 1px var(--borders);
+  border-radius: 0.3rem;
+}
+
+.md-diagram-panel text,
+.md-diagram-panel .label {
+  color: var(--text-color);
+}
+
+.md-diagram-panel text {
+  fill: var(--text-color) !important /*required*/;
+}
+
+.md-diagram-panel-error {
+  color: var(--danger-color);
+}
+
+/*CHECKBOXES*/
+
+.md-task-list-item > input:before,
+input[type='checkbox']:before {
+  border-radius: 0.2rem;
+  margin-top: -0.08rem;
+  margin-left: -0.1rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--borders);
+  content: ' ';
+  display: block;
+  transition-duration: 0.3s;
+  transition-property: background-color;
+}
+
+.md-task-list-item:hover > input:before,
+input[type='checkbox']:hover:before {
+  background-color: var(--boxes-darker);
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before,
+input[type='checkbox']:checked:before {
+  background-color: var(--primary-color);
+}
+
+.md-task-list-item:hover > input:checked:before,
+.md-task-list-item:hover > input[checked]:before,
+input[type='checkbox']:hover:checked:before {
+  background-color: var(--primary-color-darker);
+}
+
+.md-task-list-item > input:after,
+.md-task-list-item > input:after,
+input[type='checkbox']:after {
+  transform: rotate(-45deg);
+  position: absolute;
+  border: 2px solid white;
+  border-top: 0;
+  border-right: 0;
+  top: 0.16rem;
+  left: 0.1rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  content: ' ';
+  opacity: 0;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+}
+
+.md-task-list-item > input:checked:after,
+.md-task-list-item > input[checked]:after,
+input[type='checkbox']:checked:after {
+  opacity: 1;
+}
+
+.ty-preferences input[type='checkbox']:before {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.ty-preferences input[type='checkbox']:after {
+  width: 0.5rem;
+  height: 0.32rem;
+  top: 0.19rem;
+  left: 0.14rem;
+}
+
+@media print {
+  html {
+    font-size: 13px;
+  }
+
+  table,
+  pre {
+    page-break-inside: avoid;
+  }
+
+  pre {
+    word-wrap: break-word;
+  }
+}
+
+#write pre.md-meta-block {
+  padding: 1rem;
+  line-height: 1.45;
+  background-color: var(--boxes);
+  border: 0;
+  border-radius: 0.3rem;
+  color: var(--text-color);
+  border-left: solid 4px var(--boxes-darkest);
+}
+
+#write pre.md-meta-block:empty:before {
+  color: var(--light-text-color);
+}
+
+.md-image > .md-meta {
+  border-radius: 3px;
+  padding: 2px 0px 0px 4px;
+  font-size: 0.9em;
+  color: inherit;
+}
+
+.md-tag {
+  color: var(--md-char-color);
+  opacity: 1;
+}
+
+/*TOC*/
+
+.md-toc {
+  margin: 1.5rem 0rem;
+}
+
+.md-toc:focus .md-toc-content {
+  border: none;
+}
+
+#write div.md-toc-tooltip {
+  background-color: var(--boxes);
+  line-height: 1.6rem;
+  padding: 0.3rem 0.75rem;
+  border-top: none;
+  border-radius: 0.3rem;
+}
+
+.md-toc.md-focus {
+  margin-top: 4.5rem;
+}
+
+#write div.md-toc-tooltip + .md-toc-content{
+  padding-top: 1rem;
+}
+
+.md-delete-toc {
+  padding: 0px;
+}
+
+/*MATH*/
+
+.md-rawblock-container {
+  padding: 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition-duration: 0.2s;
+}
+
+.md-rawblock:hover .md-rawblock-container {
+  background-color: var(--boxes);
+}
+
+.md-rawblock:active .md-rawblock-container {
+  background-color: var(--boxes-darker);
+}
+
+.MathJax_SVG:focus {
+  outline: none;
+}
+
+.md-rawblock-panel,
+.md-rawblock-control:not(.md-rawblock-tooltip) {
+  border-radius: 0.3rem;
+  background-color: var(--boxes);
+}
+
+.md-rawblock-panel .code-tooltip {
+  box-shadow: none;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.md-rawblock-panel .CodeMirror-linenumber {
+  color: var(--light-text-color);
+  opacity: 1;
+}
+
+.md-rawblock-panel .CodeMirror div.CodeMirror-cursor {
+  border-left: solid 1px var(--text-color);
+}
+
+.md-mathblock-panel .md-mathjax-preview,
+.mathjax-candidate {
+  border-top: solid 1px var(--borders);
+}
+
+.md-rawblock-after,
+.md-rawblock-before {
+  cursor: default;
+  color: var(--light-text-color);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.md-rawblock-tooltip-name {
+  font-size: 13px;
+  color: var(--light-text-color);
+  opacity: 1;
+}
+
+.md-rawblock-on-edit > .md-rawblock-tooltip {
+  padding-right: 0px;
+}
+
+.md-rawblock-input span.cm-tag {
+  color: #0bb6ad;
+}
+
+.md-rawblock-input span.cm-atom, .md-inline-math script {
+  color: #b61ed4;
+}
+
+.md-rawblock-input span.cm-number {
+  color: #ec7200;
+}
+
+.md-rawblock-input span.cm-keyword {
+  color: #156db6;
+}
+
+.md-mathblock-input span.cm-bracket {
+  color: var(--light-text-color);
+}
+
+#math-inline-preview.code-tooltip {
+  border-radius: 0.3rem;
+  background-color: var(--bg-color);
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+  color: var(--text-color);
+  opacity: 1;
+}
+
+#math-inline-preview.code-tooltip .code-tooltip-content {
+  border: solid 1px var(--borders);
+}
+
+#math-inline-preview.code-tooltip .md-arrow:after {
+  background-color: var(--bg-color);
+  border: solid 1px var(--borders);
+  box-shadow: none;
+}
+
+/*FOOTER*/
+
+footer.ty-footer {
+  border: none;
+}
+
+.footer-item {
+  opacity: 1 !important;
+  color: var(--light-text-color);
+  transition: 0.3s;
+}
+
+.footer-item:hover {
+  color: var(--light-text-color-darker) !important;
+}
+
+#outline-btn:hover {
+  color: var(--light-text-color-darker) !important;
+}
+
+/*SIDEBAR*/
+
+#typora-sidebar {
+  border-right: solid 1px var(--borders);
+}
+
+.info-panel-tab {
+  opacity: 1;
+}
+
+.sidebar-tab {
+  font-weight: 500;
+  color: var(--light-text-color);
+}
+
+.info-panel-tab-border {
+  color: var(--primary-color);
+  border-radius: 2px;
+}
+
+#ty-sidebar-search-back-btn {
+  margin: auto;
+}
+
+.ty-show-outline-filter #file-library-search,
+.ty-show-search #file-library-search {
+  height: 4rem;
+}
+
+#file-library-search-input {
+  height: 2rem;
+}
+
+#file-library-search-panel input {
+  margin-top: 8px !important;
+}
+
+.ty-sidebar-search-panel .searchpanel-search-option-btn,
+#ty-sidebar-search-tabs .searchpanel-search-option-btn {
+  top: 15px;
+}
+
+#typora-sidebar #filesearch-case-ion-btn,
+#typora-sidebar #filesearch-word-ion-btn {
+  background: none;
+  margin-top: 0.45rem;
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+#typora-sidebar #filesearch-case-ion-btn:hover,
+#typora-sidebar #filesearch-word-ion-btn:hover {
+  color: var(--primary-color);
+}
+
+/*sidebar loading*/
+
+#typora-sidebar #sidebar-loading-template {
+  padding: 0px;
+}
+
+#typora-sidebar #sidebar-loading-template .typora-search-spinner {
+  opacity: 1;
+  color: var(--light-text-color-darker);
+}
+
+#typora-sidebar #sidebar-loading-template .typora-quick-open-info {
+  color: var(--light-text-color-darker);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/*sidebar outline*/
+
+#close-outline-filter-btn {
+  top: 15px;
+  opacity: 1;
+  color: var(--light-text-color) !important;
+}
+
+#close-outline-filter-btn:hover {
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+}
+
+#close-outline-filter-btn:active {
+  background-color: transparent !important;
+}
+
+#outline-content {
+  padding-right: 0px;
+  line-height: 1rem;
+}
+
+.outline-item {
+  display: flex;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.outline-item .outline-label {
+  display: block;
+  width: 100%;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-right: solid 2px transparent;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--light-text-color-darker);
+  transition-duration: 0.3s;
+  transition-property: color;
+}
+
+.outline-item:hover {
+  background: none;
+}
+
+.outline-item:hover .outline-label {
+  color: var(--primary-color);
+}
+
+.outline-label:hover {
+  text-decoration: none;
+}
+
+.outline-active.outline-label {
+  border-right: solid 2px var(--primary-color);
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.outline-expander {
+  padding-top: 0.4rem;
+  padding-right: 0.5rem;
+}
+
+/*sidebar file-list and search results*/
+
+#file-library-list[data-state='complete'] #sidebar-loading-template {
+  padding: 0rem;
+}
+
+#typora-sidebar .file-list-item,
+.ty-search-item {
+  border: none;
+  transition-duration: 0.3s !important;
+  transition-property: background-color, border, color, height !important;
+  padding: 1rem;
+}
+
+#typora-sidebar .file-list-item:hover,
+.ty-search-item:hover {
+  background: var(--borders);
+}
+
+#typora-sidebar .ty-search-item-line {
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  margin-left: 24px;
+  transition-duration: 0.2s;
+}
+
+#typora-sidebar .ty-search-item-line * {
+  opacity: 1;
+}
+
+#typora-sidebar .ty-search-item .ty-search-item-line:hover,
+#typora-sidebar .ty-search-item-line.active {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+#typora-sidebar .file-list-item-file-name {
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 0rem;
+  line-height: 1.8rem;
+  float: right;
+}
+
+#typora-sidebar .file-list-item-file-ext-part {
+  font-weight: 800;
+  opacity: 0.5;
+}
+
+#typora-sidebar .file-list-item-parent-loc,
+#typora-sidebar .file-list-item-time {
+  font-family: var(--font-family);
+  font-weight: 400;
+  opacity: 0.5;
+  display: block;
+}
+
+#typora-sidebar .file-list-item-summary {
+  float: left;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+#typora-sidebar input.file-list-item-file-name {
+  margin: 0.5rem 0rem 0.5rem 0.7rem;
+  padding: 0.4rem !important;
+  line-height: 1rem;
+  float: right;
+  border-radius: 0.3rem;
+  font-weight: 500;
+  background-color: white !important;
+}
+
+#typora-sidebar .file-list-item-count {
+  font-size: 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0.2rem;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  text-align: center;
+  line-height: 1.25rem;
+  position: relative;
+  top: 0.3rem;
+}
+
+#typora-sidebar .file-list-item.file-library-file-node {
+  border: none;
+}
+
+#typora-sidebar .file-tree-node.active .file-node-background,
+#typora-sidebar .file-list-item.active,
+#typora-sidebar .ty-search-item.active {
+  background-color: white;
+  outline: 1px solid var(--borders);
+  border: none;
+  color: var(--primary-color) !important;
+}
+
+#typora-sidebar .file-tree-node.active .file-node-content {
+  color: var(--primary-color) !important;
+}
+
+#typora-sidebar .file-tree-node {
+  padding: 0rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-left: 0.8rem;
+}
+
+#typora-sidebar .file-tree-node .file-node-content {
+  padding: 0rem;
+  line-height: 2.2rem;
+  height: 2.2rem;
+  background: none;
+  margin-bottom: 0px;
+}
+
+#typora-sidebar .file-tree-node .file-node-background {
+  padding: 0rem;
+  height: 2.2rem;
+}
+
+#typora-sidebar .file-tree-node .file-node-icon {
+  margin-right: 0.5rem;
+}
+
+#typora-sidebar .file-tree-node .file-node-icon.fa-file-text-o {
+  margin-top: 0.33rem;
+}
+
+#typora-sidebar .file-tree-node .file-node-icon.fa-folder {
+  margin-top: 0.36rem;
+}
+
+#typora-sidebar .file-tree-node .fa-caret-down,
+#typora-sidebar .file-tree-node .fa-caret-right {
+  position: relative;
+  top: 5px;
+}
+
+#typora-sidebar .file-tree-node .file-tree-rename-input {
+  height: 2.2rem;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0rem;
+  padding-left: 0rem;
+}
+
+#typora-sidebar .ty-search-item-collapse-icon {
+  top: 9px;
+}
+
+/*no left border*/
+#typora-sidebar .file-tree-node.active > .file-node-background {
+  border: none;
+}
+
+/*no dotted highlighting*/
+.file-library-node:not(.file-node-root):focus > .file-node-content {
+  outline: none;
+}
+
+#typora-sidebar #sidebar-files-menu {
+  border: solid 1px var(--borders);
+  border-radius: 0.3rem;
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+}
+
+#typora-sidebar #ty-sidebar-footer {
+  background-color: var(--bg-color);
+  border-top: solid 1px var(--borders);
+  font-weight: 500;
+}
+
+#typora-sidebar #ty-sidebar-footer li {
+  transition-duration: 0.2s;
+  transition-property: background-color, color;
+}
+
+#typora-sidebar #ty-sidebar-footer li:not(.file-sort-item):not(:first-child):hover {
+  color: var(--primary-color);
+  background-color: var(--boxes);
+}
+
+#typora-sidebar #ty-sidebar-footer .file-action-item.file-sort-item > span:first-of-type {
+  line-height: 2rem;
+}
+
+/*cursor*/
+.file-node-content:hover {
+  cursor: pointer;
+}
+
+.file-tree-node:not(.file-node-root):not(.file-node-expanded) .file-node-background {
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+.file-tree-node:not(.file-node-root):not(.file-node-expanded):hover .file-node-background {
+  background-color: var(--borders);
+}
+
+#typora-sidebar .sidebar-footer-item {
+  transition-duration: 0.2s;
+  transition-property: background-color, color;
+  font-weight: 700;
+}
+
+#typora-sidebar .sidebar-footer-item:hover {
+  color: var(--primary-color);
+  background-color: var(--boxes);
+}
+
+#typora-quick-open {
+  background-color: white;
+  border: 1px solid var(--borders);
+  border-radius: 0.3rem;
+  padding: 0rem;
+  box-shadow: rgba(116, 129, 141, 0.15) 0px 3px 16px 0px;
+  overflow: hidden;
+}
+
+#typora-quick-open-input {
+  margin-right: 20px;
+}
+
+#typora-quick-open-input .input {
+  box-shadow: none;
+  border: none;
+  margin: 0.5rem;
+  margin-left: 0.8rem;
+}
+
+.typora-quick-open-item {
+  background-color: white;
+  border: none;
+  font-weight: 500;
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+.typora-quick-open-item:hover {
+  background-color: var(--boxes);
+  color: var(--primary-color);
+}
+
+.typora-quick-open-item.active {
+  background-color: var(--boxes);
+  border: none;
+}
+
+.ty-quick-open-category-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  opacity: 1;
+  color: var(--light-text-color);
+  line-height: 32px;
+  padding-top: 6px;
+  height: 32px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+  border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+.md-lang {
+  color: var(--primary-color);
+}
+
+/*NOTIFICATION*/
+
+#md-notification {
+  border-bottom: solid 1px var(--borders);
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+}
+
+#md-notifcation .btn {
+  border: 0;
+}
+
+/*PREFERENCES*/
+
+.ty-preferences {
+  font-family: var(--font-family);
+}
+
+.ty-preferences .window-header {
+  justify-content: space-between;
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+  border-bottom: solid 1px var(--borders);
+}
+
+.ty-preferences .window-header-content {
+  background-color: white;
+  margin: 0rem;
+}
+
+.ty-preferences .window-header h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0rem;
+  margin-left: 1rem;
+}
+
+.unibody-window .ty-preferences .window-header h2 {
+  margin-left: 1rem !important;
+}
+
+.ty-preferences .window-header-back {
+  margin-left: 1.2rem;
+}
+
+.ty-preferences .window-header-back .icon {
+  border-right: none;
+}
+
+/*preferences sidebar*/
+.ty-preferences .window-content {
+  background-color: white;
+}
+
+.ty-preferences .nav-group-item {
+  color: var(--text-color);
+  height: 2.5rem;
+  line-height: 2.6rem;
+  font-weight: 500;
+  padding: 0px 0px 0px 2rem;
+  font-size: 1rem;
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+.ty-preferences .nav-group-item:hover {
+  background-color: var(--borders);
+  border-radius: 0px;
+}
+
+.ty-preferences .nav-group-item.active {
+  border-radius: 0rem;
+  border: none;
+  outline: 1px solid var(--borders);
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.ty-preferences .pane-sm {
+  background: var(--boxes);
+  flex-basis: 240px;
+  flex-grow: 0;
+  justify-content: center;
+  border-right: 1px solid var(--borders);
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.ty-preferences .pane-sm .list-group {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.ty-preferences .list-group-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ty-preferences .list-group-header div {
+  width: 100%;
+  margin-right: 18px;
+  margin-left: 18px;
+}
+
+.ty-preferences .pane-sm .search-input {
+  margin: 0rem !important;
+  width: 100%;
+  font-size: 1rem !important;
+  height: 2.75rem;
+}
+
+.ty-preferences .pane-sm .search-input:active,
+.ty-preferences .pane-sm .search-input:focus {
+  border: solid 1px var(--primary-color) !important;
+  outline: none;
+}
+
+/*preferences main*/
+.ty-preferences .panel-header {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+/*preferences stuff*/
+.ty-preferences .dropdown-menu > li,
+.dropdown-item {
+  font-weight: 500;
+  font-size: 1rem;
+  transition-duration: 0.2s;
+  transition-property: all;
+}
+
+.ty-preferences .dropdown-menu .active,
+.ty-preferences .dropdown-menu li:hover,
+.dropdown-item:hover {
+  background-color: var(--boxes);
+  color: var(--primary-color);
+}
+
+#ty-spell-check-dict-missing-secondary-btn:hover {
+  color: var(--primary-color) !important;
+}
+
+.header-close .icon {
+  border: none !important;
+}
+
+/*DROPDOWN*/
+
+.dropdown-menu:not(.megamenu-menu-list),
+.auto-suggest-container {
+  background-color: var(--bg-color);
+  border: solid 1px var(--borders) !important;
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+  user-select: none;
+}
+
+.dropdown-menu > li > a {
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition-duration: 0.2s;
+  transition-property: all;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > li > a:hover,
+.menu-style-btn.active,
+.context-menu.dropdown-menu > .active > a,
+.context-menu.dropdown-menu > li > a:hover {
+  color: var(--primary-color);
+  background-color: var(--boxes);
+}
+
+.menu-style-btn {
+  color: var(--text-color);
+  border: none;
+  transition-duration: 0.2s;
+  transition-property: all;
+}
+
+.menu-style-btn:hover {
+  color: var(--primary-color);
+  background-color: var(--boxes);
+  border: none;
+}
+
+header .menu-style-btn:hover {
+  background-color: transparent;
+}
+
+.menu-item-container {
+  padding: 0 12px 0 4px;
+}
+
+.menu-item-container a.menu-style-btn {
+  padding: 0.3rem 0.6rem;
+  margin: 0;
+}
+
+.dropdown-menu .divider {
+  border-color: var(--borders);
+}
+
+/*BUTTON*/
+
+.btn,
+button {
+  border: none !important;
+  border-radius: 0.3rem !important;
+  color: var(--text-color) !important;
+  transition-duration: 0.2s;
+  transition-property: all;
+  font-size: 0.9rem !important;
+  font-weight: 500;
+  outline: none;
+}
+
+.btn-default {
+  border: none !important;
+  border-radius: 0.3rem !important;
+  background-color: var(--boxes) !important;
+}
+
+.btn:hover,
+.button-hover {
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--borders) !important;
+  color: var(--text-color);
+}
+
+button:active,
+button.active,
+.btn:active,
+.btn-default:active {
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--boxes-darker) !important;
+  box-shadow: none;
+  outline: none;
+  color: var(--text-color);
+}
+
+.btn:focus {
+  border: none !important;
+  outline: none !important;
+  background-color: var(--boxes-darker);
+}
+
+.btn-primary {
+  border: none;
+  border-radius: 0.3rem;
+  background-color: var(--primary-color);
+  color: white !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  color: white;
+  background-color: var(--primary-color-darker) !important;
+}
+
+.btn.dropdown-toggle-split,
+.btn.dropdown-toggle-split:hover {
+  border-radius: 0rem 0.3rem 0.3rem 0rem !important;
+}
+
+#ty-spell-check-dict-missing-primary-btn {
+  border-radius: 0.3rem 0rem 0rem 0.3rem !important;
+}
+
+.open > .dropdown-toggle.btn-primary {
+  background-color: var(--primary-color);
+  border-color: transparent;
+}
+
+/*GHOST BUTTON*/
+
+.window-header button,
+#close-sidebar-menu-btn,
+.html-for-mac .sidebar-tab-btn,
+.label-hint,
+.ty-table-edit .btn,
+.zoom-hint-button,
+.md-rawblock-tooltip-btn,
+.md-delete-toc,
+#md-searchpanel .input-group-addon.btn,
+#pin-outline-btn {
+  background-color: transparent !important;
+  color: var(--light-text-color) !important;
+  opacity: 1 !important;
+  transition-duration: 0.2s;
+  transition-property: color;
+}
+
+.window-header button:hover,
+.window-header button:focus,
+#close-sidebar-menu-btn:hover,
+#close-sidebar-menu-btn:focus,
+.html-for-mac .sidebar-tab-btn:hover,
+.html-for-mac .sidebar-tab-btn:focus,
+.label-hint:hover,
+.label-hint:focus,
+.ty-table-edit .btn:hover,
+.ty-table-edit .btn:focus,
+.zoom-hint-button:hover,
+.zoom-hint-button:focus,
+.md-rawblock-tooltip-btn:hover,
+.md-rawblock-tooltip-btn:focus,
+.md-delete-toc:hover,
+.md-delete-toc:focus,
+#md-searchpanel .input-group-addon.btn:hover,
+#md-searchpanel .input-group-addon.btn:focus,
+#pin-outline-btn:hover, #pin-outline-btn:focus {
+  color: var(--primary-color) !important;
+  background: none !important;
+}
+
+.ty-table-edit .btn.active {
+  color: var(--primary-color) !important;
+  box-shadow: none;
+}
+
+/*IMAGE BUTTON*/
+
+.md-image-btn {
+  background-color: var(--boxes);
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+.md-image-btn:before {
+  color: var(--text-color);
+  transition-duration: 0.2s;
+  transition-property: color;
+}
+
+.md-image-btn:hover {
+  background-color: var(--borders);
+}
+
+.md-image-btn:hover:before {
+  color: var(--primary-color);
+}
+
+.md-image-input-src-btn {
+  border-radius: 0.3rem 0rem 0rem 0.3rem !important;
+}
+
+.md-image-pick-file-btn {
+  border-left: none;
+  border-radius: 0rem 0.3rem 0.3rem 0rem !important;
+}
+
+/*SEARCH-INPUTS*/
+
+.search-input,
+.search,
+.form-control,
+#file-library-search-input {
+  background-color: transparent !important;
+  border-radius: 0.3rem !important;
+  border: solid 1px var(--boxes-darker) !important;
+  box-shadow: none !important;
+  color: var(---heading-text-color) !important;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  padding: 0.7rem !important;
+  height: 2rem;
+  transition-duration: 0.2s;
+  transition-property: border, box-shadow;
+}
+
+.search-input:hover,
+.search:hover,
+.form-control:hover,
+#file-library-search-input:hover {
+  border: solid 1px var(--boxes-darker2) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+.search-input:focus,
+.search:focus,
+.form-control:focus,
+#file-library-search-input:focus {
+  background-color: transparent !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
+  color: var(--heading-text-color) !important;
+  font-size: 0.9rem !important;
+  padding: 0.7rem !important;
+}
+
+.search-input::placeholder,
+.search::placeholder,
+.form-control::placeholder,
+#file-library-search-input::placeholder {
+  color: var(--light-text-color-darker) !important;
+}
+
+.clear-btn-icon {
+  top: 9px !important /*required*/;
+  right: 9px !important /*required*/;
+}
+
+.content tr.search-hit,
+.search-hit,
+.md-search-hit,
+.md-search-hit.md-search-select,
+.md-search-select,
+.ty-file-search-match-text {
+  background-color: var(--boxes-darkest);
+  color: white;
+  padding: 0.2rem 0.1rem;
+  border-radius: 0.2rem;
+}
+
+/*ZOOM HINT*/
+
+#zoom-hint {
+  border-radius: 0.3rem;
+  border: solid 1px var(--borders);
+  user-select: none;
+  box-shadow: rgba(116, 129, 141, 0.08) 0px 2px 6px 0px;
+}
+
+#zoom-hint #zoom-hint-reset {
+  border-left: none;
+  font-weight: 600;
+}
+
+/*SEARCHPANEL*/
+
+#md-searchpanel {
+  border-bottom: 1px solid var(--borders);
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+  max-height: 46px;
+}
+
+.mac-seamless-mode #md-searchpanel {
+  max-height: 70px;
+}
+
+#md-searchpanel.searchpanel-replace-mode {
+  max-height: 84px;
+}
+
+.mac-seamless-mode #md-searchpanel.searchpanel-replace-mode {
+  max-height: 108px;
+}
+
+#md-searchpanel input {
+  height: 2rem;
+  margin: 0rem !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+}
+
+#md-searchpanel .input-group-addon {
+  height: 2rem;
+}
+
+#md-searchpanel .input-group-addon.close-btn {
+  padding-left: 8px;
+}
+
+.unibody-window #md-searchpanel .btn {
+  line-height: 2rem;
+}
+
+.searchpanel-search-option-btn {
+  top: 9px;
+  border: none;
+  color: var(--light-text-color-darker) !important /*required*/;
+  transition-duration: 0.3s;
+}
+
+.searchpanel-search-option-btn:hover {
+  color: var(--primary-color) !important /*required*/;
+  background-color: transparent !important /*required*/;
+}
+
+.searchpanel-search-option-btn.select,
+.searchpanel-search-option-btn.active {
+  color: white !important;
+  background-color: var(--primary-color) !important;
+}
+
+#searchpanel-case-option-btn {
+  right: 33px;
+}
+
+#searchpanel-word-option-btn {
+  right: 9px;
+}
+
+#searchpanel-word-option-btn,
+#searchpanel-case-option-btn {
+  background: none;
+}
+
+#md-searchpanel .btn:not(.close-btn):hover {
+  box-shadow: none;
+}
+
+/*NUMBER-INPUT*/
+input[type='number'] {
+  background-color: var(--boxes) !important;
+  border: none !important;
+  border-radius: 0.3rem;
+}
+
+input[type='number']:focus {
+  background-color: var(--item-hover-bg-color) !important;
+}
+
+/*SELECTS*/
+
+select {
+  background-color: var(--bg-color) !important;
+  border-radius: 0.3rem !important;
+  border: solid 1px var(--boxes-darker2) !important;
+  box-shadow: none !important;
+  color: var(---heading-text-color) !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  padding: 0.3rem !important;
+  height: 2.1rem;
+  transition-duration: 0.2s;
+  transition-property: border;
+}
+
+select:hover {
+  background-color: var(--bg-color) !important;
+  border-radius: 0r3em !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: none !important;
+  color: var(--heading-text-color) !important;
+  font-size: 0.9rem !important;
+}
+
+/*MODAL*/
+
+.modal-header,
+#common-dialog .modal-header {
+  border-bottom: solid 1px var(--borders);
+  padding-bottom: 15px;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  user-select: none;
+}
+
+.modal-body {
+  font-size: 0.9rem;
+  color: var(--light-text-color-darker);
+  user-select: none;
+}
+
+.modal-content {
+  box-shadow: rgba(116, 129, 141, 0.15) 0px 3px 10px 0px;
+  border: solid 1px var(--boxes-darker);
+  border-radius: 0.3rem;
+}
+
+.modal-footer {
+  border-top: solid 1px var(--borders);
+}
+
+.modal-open .modal.fade.in {
+  background: none;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+
+/*LANGS*/
+
+.ty-spell-check-panel-item {
+  font-weight: 500;
+  transition-duration: 0.2s;
+  transition-property: background-color, color;
+}
+
+.ty-spell-check-panel-item:hover {
+  color: var(--primary-color);
+  background-color: var(--boxes);
+}
+
+.ty-spell-check-panel-item.ty-active {
+  background-color: var(--boxes);
+}
+
+/*TOOLTIP*/
+
+.ty-tooltip {
+  background-color: var(--bg-color) !important;
+  border-radius: 0.3rem !important;
+  border: 1px solid var(--borders) !important;
+  -webkit-filter: none !important;
+  filter: none;
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+}
+
+/*FOOTER*/
+
+.footer-item:hover {
+  background-color: var(--boxes) !important;
+}
+
+#footer-word-count-info {
+  padding: 4px 0;
+}
+
+.footer-word-count-info-line {
+  padding: 0.25rem;
+  line-height: 1.6rem;
+}
+
+#footer-word-count-info tr {
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition-duration: 0.2s;
+  transition-property: all;
+}
+
+#footer-word-count-info tr td:nth-child(1) {
+  padding: 0rem;
+  padding-right: 1rem;
+}
+
+#footer-word-count-info .ty-footer-word-count-all tr:hover {
+  color: var(--primary-color) !important;
+  background-color: var(--boxes) !important;
+}
+
+/*MEGAMENU*/
+
+.megamenu-menu {
+  box-shadow: none;
+  background-color: var(--boxes);
+  border-right: 1px solid var(--borders);
+}
+
+.megamenu-opened .megamenu-menu {
+  left: 0px;
+}
+
+#megamenu-content {
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+#megamenu-menu-list {
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+#megamenu-menu-list li a {
+  color: var(--text-color);
+  height: 2rem;
+  line-height: 1.8rem;
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+#megamenu-menu-list li a:hover {
+  background-color: var(--borders);
+}
+
+#megamenu-menu-list li a.active {
+  color: var(--primary-color);
+  background-color: white;
+  outline: solid 1px var(--borders);
+}
+
+#megamenu-menu-list .divider {
+  background-color: var(--borders);
+  margin: 16px 0 0 0;
+}
+
+.megamenu-menu-list .saved #m-saved {
+  cursor: default;
+}
+
+.megamenu-menu-list .saved #m-saved .fa {
+  color: var(--primary-color);
+}
+
+.megamenu-menu-list .saved #m-saved:hover {
+  background-color: transparent;
+}
+
+.megamenu-menu-list #m-close:hover {
+  color: var(--danger-color);
+}
+
+.megamenu-menu-header {
+  border-bottom: solid 1px var(--borders);
+  margin-bottom: 1.2rem;
+  height: 74px;
+  transition-duration: 0.3s;
+}
+
+.megamenu-menu-header:hover {
+  background-color: var(--borders);
+}
+
+.megamenu-menu-header #megamenu-menu-header-title {
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 16px;
+  left: 56px;
+  top: 24px;
+}
+
+#megamenu-back-btn {
+  color: var(--text-color);
+  font-size: 16px;
+  left: 24px;
+  top: 24px;
+}
+
+.megamenu-opened header {
+  background-color: var(--bg-color);
+  background-image: none;
+}
+
+.megamenu-content {
+  background-color: var(--bg-color);
+  background-image: none;
+}
+
+.megamenu-menu-panel:not(:first-of-type) {
+  margin-top: 2rem;
+}
+
+.megamenu-menu-panel h1 {
+  font-weight: 900;
+  font-size: 1.8rem;
+  margin: 1rem 0rem 0.4rem 0rem;
+}
+
+.megamenu-menu-panel h2 {
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin: 1rem 0rem 0.4rem 0rem;
+}
+
+/*recent files*/
+
+#recent-file-panel tbody tr {
+  font-weight: 600;
+  transition-duration: 0.4s;
+}
+
+#recent-file-panel tbody tr:hover,
+.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
+  color: var(--primary-color);
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+  background-color: var(--boxes);
+}
+
+/*about help*/
+
+.about-content-slogon {
+  color: var(--light-text-color);
+}
+
+/*for the god himself*/
+.about-content-slogon span {
+  color: var(--primary-color) !important;
+}
+
+#about-content tbody tr {
+  font-weight: 500;
+  transition-duration: 0.4s;
+}
+
+#about-content tbody tr:hover {
+  color: var(--primary-color);
+  background-color: var(--boxes) !important /*required important*/;
+}
+
+.long-btn {
+  margin-bottom: 12px;
+  margin-left: 2px;
+  box-shadow: rgba(116, 129, 141, 0.1) 2px 2px 6px;
+  background-color: white;
+  border: 1px solid var(--borders);
+  border-radius: 0.3rem;
+  padding: 1rem;
+
+  font-weight: 700;
+  font-size: 1rem;
+
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.long-btn:hover {
+  background-color: var(--primary-color);
+  border: 1px solid transparent;
+  color: white !important /*important required*/;
+  box-shadow: rgba(116, 129, 141, 0.1) 2px 2px 6px, rgba(26, 168, 139, 0.2) 0px 0px 10px;
+}
+
+#m-import-local:hover .preference-item-hint {
+  color: white;
+  opacity: 0.7;
+}
+
+#recent-file-panel-action-btn {
+  height: 34px;
+  border: none;
+  background-color: var(--boxes);
+}
+
+#theme-preview-grid {
+  max-width: none;
+  padding: 1.5rem;
+  background-color: var(--boxes);
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+}
+
+.theme-preview-div {
+  border: none;
+  border-radius: 0.4rem;
+  box-shadow: rgba(116, 129, 141, 0.1) 0px 0px 15px;
+  margin: 0rem;
+  transition-duration: 0.3s;
+}
+
+.theme-preview-div:hover {
+  box-shadow: rgba(116, 129, 141, 0.5) 3px 8px 15px;
+  cursor: pointer;
+  transform: rotate3d(1, -0.2, 0.2, 15deg);
+}
+
+.theme-preview-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.4rem;
+}
+
+.theme-preview-content html {
+  width: 100%;
+  height: 100%;
+}
+
+.theme-preview-div.active .fa {
+  color: var(--primary-color);
+  bottom: 4px;
+  left: 4px;
+}
+
+.theme-preview-div .fa-check-circle:before {
+  background-color: var(--bg-color);
+  padding: 0px 2px;
+  border-radius: 1rem;
+}
+
+.megamenu-menu-panel tbody tr {
+  border-radius: 0.3rem;
+  transition-duration: 0.2s;
+  transition-property: background-color;
+}
+
+.megamenu-menu-panel tbody tr:hover {
+  background-color: var(--borders) !important /*required important*/;
+}
+
+/*MIN MAX CLOSE*/
+#w-min,
+#w-max,
+#w-restore,
+#w-close {
+  border-radius: 0px !important;
+  font-size: 10px !important;
+  width: 46px !important;
+  height: 29px !important;
+}
+
+.btn.toolbar-icon svg,
+.btn.toolbar-icon .ty-icon {
+  position: relative;
+  top: 2px;
+}
+
+#w-close.btn.toolbar-icon .ty-icon {
+  left: 1px;
+}
+
+#w-close:hover {
+  background-color: var(--danger-color) !important;
+  color: white !important;
+}
+
+/*EXTRA STUFF*/
+
+a[type='page-link'] {
+  display: block;
+  background-color: white;
+  box-shadow: rgba(116, 129, 141, 0.2) 0px 3px 8px 0px;
+  border: 1px solid var(--borders);
+  border-radius: 0.3rem;
+  padding: 1rem;
+
+  font-weight: 600;
+
+  transition-duration: 0.2s;
+  transition-property: border, box-shadow;
+}
+
+a[type='page-link']:hover {
+  box-shadow: rgba(116, 129, 161, 0.1) 0px 3px 8px 0px;
+  border: 1px solid var(--primary-color);
+}
+
+p[type='description'] {
+  color: var(--light-text-color);
+  margin: 0rem;
+  margin-bottom: 1rem;
+}
+
+ /*kbd*/
+
+ kbd {
+  font-family: var(--font-family);
+}
+
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						}
+</style><title>Compute_complexity_of_self_attention</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><p><mark><span>目录</span></mark></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n3"><a class="md-toc-inner" href="#compute-complexity-of-self-attention">Compute complexity of self-attention</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#1-compute-complexity-of-matrix-multiplication">1. Compute complexity of matrix multiplication</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7"><a class="md-toc-inner" href="#11-schoolbook-algorithm">1.1 Schoolbook algorithm</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n47"><a class="md-toc-inner" href="#12-strassens-algorithm">1.2 Strassen's algorithm</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n13"><a class="md-toc-inner" href="#2-compute-complexity-in-self-attention">2. Compute complexity in self-attention</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n14"><a class="md-toc-inner" href="#21-definition-of-self-attention">2.1 Definition of self-attention</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n17"><a class="md-toc-inner" href="#22-complexity-calculations">2.2 Complexity calculations</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n39"><a class="md-toc-inner" href="#3-personal-view">3. Personal view</a></span></p></div><h1 id='compute-complexity-of-self-attention'><span>Compute complexity of self-attention</span></h1><h2 id='1-compute-complexity-of-matrix-multiplication'><span>1. </span><a href='https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication'><span>Compute complexity of matrix multiplication</span></a></h2><p><span>If </span><em><span>A</span></em><span>, </span><em><span>B</span></em><span> are </span><em><span>n</span></em><span> × </span><em><span>n</span></em><span> matrices over a field, then their product </span><em><span>AB</span></em><span> is also an </span><em><span>n</span></em><span> × </span><em><span>n</span></em><span> matrix over that field, defined entrywise as</span></p><div contenteditable="false" spellcheck="false" class="mathjax-block md-end-block md-math-block md-rawblock" id="mathjax-n6" cid="n6" mdtype="math_block" data-math-tag-before="0" data-math-tag-after="0" data-math-labels="[]"><div class="md-rawblock-container md-math-container" tabindex="-1"><mjx-container class="MathJax" jax="SVG" display="true" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="19.902ex" height="6.399ex" role="img" focusable="false" viewBox="0 -1562.5 8796.6 2828.3" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -2.864ex;"><defs><path id="MJX-1-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-1-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-1-TEX-I-1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path><path id="MJX-1-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-1-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-LO-2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z"></path><path id="MJX-1-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-1-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(389,0)"><use data-c="1D434" xlink:href="#MJX-1-TEX-I-1D434"></use></g><g data-mml-node="mi" transform="translate(1139,0)"><use data-c="1D435" xlink:href="#MJX-1-TEX-I-1D435"></use></g><g data-mml-node="msub" transform="translate(1898,0)"><g data-mml-node="mo"><use data-c="29" xlink:href="#MJX-1-TEX-N-29"></use></g><g data-mml-node="TeXAtom" transform="translate(422,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D456" xlink:href="#MJX-1-TEX-I-1D456"></use></g><g data-mml-node="mi" transform="translate(345,0)"><use data-c="1D457" xlink:href="#MJX-1-TEX-I-1D457"></use></g></g></g><g data-mml-node="mo" transform="translate(3183.1,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="munderover" transform="translate(4238.8,0)"><g data-mml-node="mo"><use data-c="2211" xlink:href="#MJX-1-TEX-LO-2211"></use></g><g data-mml-node="TeXAtom" transform="translate(86,-1107.7) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D458" xlink:href="#MJX-1-TEX-I-1D458"></use></g><g data-mml-node="mo" transform="translate(521,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(1299,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g><g data-mml-node="mi" transform="translate(509.9,1150) scale(0.707)"><use data-c="1D45B" xlink:href="#MJX-1-TEX-I-1D45B"></use></g></g><g data-mml-node="msub" transform="translate(5849.5,0)"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-1-TEX-I-1D434"></use></g><g data-mml-node="TeXAtom" transform="translate(783,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D456" xlink:href="#MJX-1-TEX-I-1D456"></use></g><g data-mml-node="mi" transform="translate(345,0)"><use data-c="1D458" xlink:href="#MJX-1-TEX-I-1D458"></use></g></g></g><g data-mml-node="msub" transform="translate(7294.9,0)"><g data-mml-node="mi"><use data-c="1D435" xlink:href="#MJX-1-TEX-I-1D435"></use></g><g data-mml-node="TeXAtom" transform="translate(792,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D458" xlink:href="#MJX-1-TEX-I-1D458"></use></g><g data-mml-node="mi" transform="translate(521,0)"><use data-c="1D457" xlink:href="#MJX-1-TEX-I-1D457"></use></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mo stretchy="false">(</mo><mi>A</mi><mi>B</mi><msub><mo stretchy="false">)</mo><mrow data-mjx-texclass="ORD"><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><munderover><mo data-mjx-texclass="OP">∑</mo><mrow data-mjx-texclass="ORD"><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>A</mi><mrow data-mjx-texclass="ORD"><mi>i</mi><mi>k</mi></mrow></msub><msub><mi>B</mi><mrow data-mjx-texclass="ORD"><mi>k</mi><mi>j</mi></mrow></msub></math></mjx-assistive-mml></mjx-container></div></div><h3 id='11-schoolbook-algorithm'><span>1.1 Schoolbook algorithm</span></h3><p><span>The simplest approach to computing the product of two </span><em><span>n</span></em><span> × </span><em><span>n</span></em><span> matrices </span><em><span>A</span></em><span> and </span><em><span>B</span></em><span> is to compute the arithmetic expressions coming from the definition of matrix multiplication. In pseudocode:</span></p><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" spellcheck="false" lang="pseudocode"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="pseudocode"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 26.8px; left: 52px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 32px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -32px; width: 32px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -32px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 33px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">input</span> <span class="cm-variable">A</span> <span class="cm-keyword">and</span> <span class="cm-variable">B</span>, <span class="cm-variable">both</span> <span class="cm-variable">n</span> <span class="cm-variable">by</span> <span class="cm-variable">n</span> <span class="cm-variable">matrices</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -32px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 33px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">initialize</span> <span class="cm-variable">C</span> <span class="cm-variable">to</span> <span class="cm-variable">be</span> <span class="cm-variable">an</span> <span class="cm-variable">n</span> <span class="cm-variable">by</span> <span class="cm-variable">n</span> <span class="cm-variable">matrix</span> <span class="cm-keyword">of</span> <span class="cm-keyword">all</span> <span class="cm-variable">zeros</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -32px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 33px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">i</span> <span class="cm-variable">from</span> <span class="cm-number">1</span> <span class="cm-variable">to</span> <span class="cm-variable">n</span><span class="cm-bracket">:</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -32px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 33px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">j</span> <span class="cm-variable">from</span> <span class="cm-number">1</span> <span class="cm-variable">to</span> <span class="cm-variable">n</span><span class="cm-bracket">:</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -32px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 33px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-keyword">for</span> <span class="cm-variable">k</span> <span class="cm-variable">from</span> <span class="cm-number">1</span> <span class="cm-variable">to</span> <span class="cm-variable">n</span><span class="cm-bracket">:</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -32px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 33px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">C</span><span class="cm-bracket">[</span><span class="cm-variable">i</span><span class="cm-bracket">][</span><span class="cm-variable">j</span><span class="cm-bracket">]</span> <span class="cm-operator">=</span> <span class="cm-variable">C</span><span class="cm-bracket">[</span><span class="cm-variable">i</span><span class="cm-bracket">][</span><span class="cm-variable">j</span><span class="cm-bracket">]</span> <span class="cm-operator">+</span> <span class="cm-variable">A</span><span class="cm-bracket">[</span><span class="cm-variable">i</span><span class="cm-bracket">][</span><span class="cm-variable">k</span><span class="cm-bracket">]</span><span class="cm-operator">*</span><span class="cm-variable">B</span><span class="cm-bracket">[</span><span class="cm-variable">k</span><span class="cm-bracket">][</span><span class="cm-variable">j</span><span class="cm-bracket">]</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -32px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 33px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">output</span> <span class="cm-variable">C</span> <span class="cm-bracket">(</span><span class="cm-variable">as</span> <span class="cm-variable">A</span><span class="cm-operator">*</span><span class="cm-variable">B</span><span class="cm-bracket">)</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 179px;"></div><div class="CodeMirror-gutters" style="height: 179px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 41px;"></div></div></div></div></pre><p><span>This algorithm requires, in the worst case, </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="2.345ex" height="1.91ex" role="img" focusable="false" viewBox="0 -833.2 1036.6 844.2" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.025ex;"><defs><path id="MJX-2-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-2-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-2-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="33" xlink:href="#MJX-2-TEX-N-33"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">n^3</script><span> multiplications of scalars and </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.456ex" height="2.072ex" role="img" focusable="false" viewBox="0 -833.9 3295.6 915.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.186ex;"><defs><path id="MJX-3-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-3-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-3-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-3-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-3-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="33" xlink:href="#MJX-3-TEX-N-33"></use></g></g><g data-mml-node="mo" transform="translate(1258.8,0)"><use data-c="2212" xlink:href="#MJX-3-TEX-N-2212"></use></g><g data-mml-node="msup" transform="translate(2259,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-3-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-3-TEX-N-32"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup><mo>−</mo><msup><mi>n</mi><mn>2</mn></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">n^3-n^2</script><span> additions for computing the product of two square n×n matrices. Its computational complexity is therefore </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.866ex" height="2.451ex" role="img" focusable="false" viewBox="0 -833.2 2592.6 1083.2" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-4-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-4-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-4-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-4-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-4-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-4-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1167,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-4-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="33" xlink:href="#MJX-4-TEX-N-33"></use></g></g><g data-mml-node="mo" transform="translate(2203.6,0)"><use data-c="29" xlink:href="#MJX-4-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mn>3</mn></msup><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(n^3)</script></p><p><span>Surprisingly, algorithms exist that provide better running times than this straightforward &quot;schoolbook algorithm&quot;. The first to be discovered was Strassen&#39;s algorithm, devised by Volker Strassen in 1969 and often referred to as &quot;fast matrix multiplication&quot;.[1] The optimal number of field operations needed to multiply two square n × n matrices up to constant factors is still unknown. This is a major open question in theoretical computer science.</span></p><p><span>As of December 2020, the matrix multiplication algorithm with best asymptotic complexity runs in </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="11.91ex" height="2.468ex" role="img" focusable="false" viewBox="0 -841 5264 1091" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-5-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-5-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-5-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-5-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-5-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-5-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-5-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-5-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJX-5-TEX-N-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path><path id="MJX-5-TEX-N-39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path id="MJX-5-TEX-N-36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path><path id="MJX-5-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-5-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1167,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-5-TEX-I-1D45B"></use></g><g data-mml-node="TeXAtom" transform="translate(633,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-5-TEX-N-32"></use><use data-c="2E" xlink:href="#MJX-5-TEX-N-2E" transform="translate(500,0)"></use><use data-c="33" xlink:href="#MJX-5-TEX-N-33" transform="translate(778,0)"></use><use data-c="37" xlink:href="#MJX-5-TEX-N-37" transform="translate(1278,0)"></use><use data-c="32" xlink:href="#MJX-5-TEX-N-32" transform="translate(1778,0)"></use><use data-c="38" xlink:href="#MJX-5-TEX-N-38" transform="translate(2278,0)"></use><use data-c="35" xlink:href="#MJX-5-TEX-N-35" transform="translate(2778,0)"></use><use data-c="39" xlink:href="#MJX-5-TEX-N-39" transform="translate(3278,0)"></use><use data-c="36" xlink:href="#MJX-5-TEX-N-36" transform="translate(3778,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(4875,0)"><use data-c="29" xlink:href="#MJX-5-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mrow data-mjx-texclass="ORD"><mn>2.3728596</mn></mrow></msup><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(n^{2.3728596})</script><span>time, given by Josh Alman and Virginia Vassilevska Williams.</span></p><h3 id='12-strassens-algorithm'><span>1.2 </span><a href='https://en.wikipedia.org/wiki/Strassen_algorithm'><span>Strassen&#39;s algorithm</span></a></h3><p><span>Strassen&#39;s algorithm improves on naive matrix multiplication through a divide-and-conquer approach. The key observation is that multiplying two 2 × 2 matrices can be done with only 7 multiplications, instead of the usual 8 (at the expense of several additional addition and subtraction operations). This means that, treating the input n×n matrices as block 2 × 2 matrices, the task of multiplying n×n matrices can be reduced to 7 subproblems of multiplying n/2×n/2 matrices. Applying this recursively gives an algorithm needing </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="20.307ex" height="2.497ex" role="img" focusable="false" viewBox="0 -853.7 8975.5 1103.7" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-64-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-64-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-64-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-64-TEX-I-1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path id="MJX-64-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-64-TEX-I-1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path id="MJX-64-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-64-TEX-N-37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path><path id="MJX-64-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-64-TEX-N-2248" d="M55 319Q55 360 72 393T114 444T163 472T205 482Q207 482 213 482T223 483Q262 483 296 468T393 413L443 381Q502 346 553 346Q609 346 649 375T694 454Q694 465 698 474T708 483Q722 483 722 452Q722 386 675 338T555 289Q514 289 468 310T388 357T308 404T224 426Q164 426 125 393T83 318Q81 289 69 289Q55 289 55 319ZM55 85Q55 126 72 159T114 210T163 238T205 248Q207 248 213 248T223 249Q262 249 296 234T393 179L443 147Q502 112 553 112Q609 112 649 141T694 220Q694 249 708 249T722 217Q722 153 675 104T555 55Q514 55 468 76T388 123T308 170T224 192Q164 192 125 159T83 84Q80 55 69 55Q55 55 55 85Z"></path><path id="MJX-64-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-64-TEX-N-38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path id="MJX-64-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-64-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-64-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1167,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-64-TEX-I-1D45B"></use></g><g data-mml-node="TeXAtom" transform="translate(633,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D459" xlink:href="#MJX-64-TEX-I-1D459"></use></g><g data-mml-node="mi" transform="translate(298,0)"><use data-c="1D45C" xlink:href="#MJX-64-TEX-I-1D45C"></use></g><g data-mml-node="msub" transform="translate(783,0)"><g data-mml-node="mi"><use data-c="1D454" xlink:href="#MJX-64-TEX-I-1D454"></use></g><g data-mml-node="mn" transform="translate(510,-150) scale(0.707)"><use data-c="32" xlink:href="#MJX-64-TEX-N-32"></use></g></g><g data-mml-node="mn" transform="translate(1696.6,0)"><use data-c="37" xlink:href="#MJX-64-TEX-N-37"></use></g></g></g><g data-mml-node="mo" transform="translate(3403.2,0)"><use data-c="29" xlink:href="#MJX-64-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(4070,0)"><use data-c="2248" xlink:href="#MJX-64-TEX-N-2248"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(5125.8,0)"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-64-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(5903.8,0)"><use data-c="28" xlink:href="#MJX-64-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(6292.8,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-64-TEX-I-1D45B"></use></g><g data-mml-node="TeXAtom" transform="translate(633,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><use data-c="32" xlink:href="#MJX-64-TEX-N-32"></use><use data-c="2E" xlink:href="#MJX-64-TEX-N-2E" transform="translate(500,0)"></use><use data-c="38" xlink:href="#MJX-64-TEX-N-38" transform="translate(778,0)"></use><use data-c="30" xlink:href="#MJX-64-TEX-N-30" transform="translate(1278,0)"></use><use data-c="37" xlink:href="#MJX-64-TEX-N-37" transform="translate(1778,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(8586.5,0)"><use data-c="29" xlink:href="#MJX-64-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mrow data-mjx-texclass="ORD"><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>7</mn></mrow></msup><mo stretchy="false">)</mo><mo>≈</mo><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mrow data-mjx-texclass="ORD"><mn>2.807</mn></mrow></msup><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(n^{log_27})\approx \Omicron(n^{2.807})</script><span> field operations.</span></p><p><span>Unlike algorithms with faster asymptotic complexity, Strassen&#39;s algorithm is used in practice. The numerical stability is reduced compared to the naive algorithm, but it is faster in cases where n &gt; 100 or so and appears in several libraries, such as BLAS. It is very useful for large matrices over exact domains such as finite fields, where numerical stability is not an issue.</span></p><h2 id='2-compute-complexity-in-self-attention'><span>2. Compute complexity in self-attention</span></h2><h3 id='21-definition-of-self-attention'><span>2.1 Definition of self-attention</span></h3><p><span> In this blog, </span><mark><span>self-attention layer consists of a point-wise feed-forward computation and self-attention function.</span></mark><span> The compute complexity of transformer claimed in </span><a href='https://arxiv.org/abs/1706.03762'><span>Transformer Paper</span></a><span> contains only self-attention function.</span></p><p><img src="figures/self_attention.png" referrerpolicy="no-referrer" alt="selfattention"></p><p><img src="figures/compute_complex.png" referrerpolicy="no-referrer" alt="complexity"></p><h3 id='22-complexity-calculations'><span>2.2 Complexity calculations</span></h3><p><span>Assuming </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.928ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 852 683" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: 0px;"><defs><path id="MJX-6-TEX-I-1D44B" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D44B" xlink:href="#MJX-6-TEX-I-1D44B"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>X</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">X</script><span> is the input of self-attention, whose shape is </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.3ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2342.7 1000" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-7-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-7-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-7-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-7-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-7-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="28" xlink:href="#MJX-7-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(389,0)"><use data-c="1D45B" xlink:href="#MJX-7-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(989,0)"><use data-c="2C" xlink:href="#MJX-7-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(1433.7,0)"><use data-c="1D451" xlink:href="#MJX-7-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(1953.7,0)"><use data-c="29" xlink:href="#MJX-7-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">(n,d)</script><span>, where </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="3.542ex" height="2.009ex" role="img" focusable="false" viewBox="0 -694 1565.7 888" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-8-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-8-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-8-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-8-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600,0)"><use data-c="2C" xlink:href="#MJX-8-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(1044.7,0)"><use data-c="1D458" xlink:href="#MJX-8-TEX-I-1D458"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>,</mo><mi>k</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">n, k</script><span> represent number of tokens and dimension of each token, respectively.</span></p><ul><li><span>Point-wise feed-forward computation: Linear computation to obtain </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.553ex" height="2.032ex" role="img" focusable="false" viewBox="0 -704 3338.3 898" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-9-TEX-I-1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path><path id="MJX-9-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-9-TEX-I-1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path><path id="MJX-9-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D444" xlink:href="#MJX-9-TEX-I-1D444"></use></g><g data-mml-node="mo" transform="translate(791,0)"><use data-c="2C" xlink:href="#MJX-9-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(1235.7,0)"><use data-c="1D43E" xlink:href="#MJX-9-TEX-I-1D43E"></use></g><g data-mml-node="mo" transform="translate(2124.7,0)"><use data-c="2C" xlink:href="#MJX-9-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(2569.3,0)"><use data-c="1D449" xlink:href="#MJX-9-TEX-I-1D449"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Q</mi><mo>,</mo><mi>K</mi><mo>,</mo><mi>V</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">Q,K,V</script><span>, eg. </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="23.69ex" height="3.444ex" role="img" focusable="false" viewBox="0 -1060.7 10471 1522.1" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -1.044ex;"><defs><path id="MJX-10-TEX-I-1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path><path id="MJX-10-TEX-D-211D" d="M17 665Q17 672 28 683H221Q415 681 439 677Q461 673 481 667T516 654T544 639T566 623T584 607T597 592T607 578T614 565T618 554L621 548Q626 530 626 497Q626 447 613 419Q578 348 473 326L455 321Q462 310 473 292T517 226T578 141T637 72T686 35Q705 30 705 16Q705 7 693 -1H510Q503 6 404 159L306 310H268V183Q270 67 271 59Q274 42 291 38Q295 37 319 35Q344 35 353 28Q362 17 353 3L346 -1H28Q16 5 16 16Q16 35 55 35Q96 38 101 52Q106 60 106 341T101 632Q95 645 55 648Q17 648 17 665ZM241 35Q238 42 237 45T235 78T233 163T233 337V621L237 635L244 648H133Q136 641 137 638T139 603T141 517T141 341Q141 131 140 89T134 37Q133 36 133 35H241ZM457 496Q457 540 449 570T425 615T400 634T377 643Q374 643 339 648Q300 648 281 635Q271 628 270 610T268 481V346H284Q327 346 375 352Q421 364 439 392T457 496ZM492 537T492 496T488 427T478 389T469 371T464 361Q464 360 465 360Q469 360 497 370Q593 400 593 495Q593 592 477 630L457 637L461 626Q474 611 488 561Q492 537 492 496ZM464 243Q411 317 410 317Q404 317 401 315Q384 315 370 312H346L526 35H619L606 50Q553 109 464 243Z"></path><path id="MJX-10-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-10-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-10-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-10-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-10-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-10-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-10-TEX-I-1D44B" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path><path id="MJX-10-TEX-I-1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use data-c="1D444" xlink:href="#MJX-10-TEX-I-1D444"></use></g><g data-mml-node="TeXAtom" transform="translate(824,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="211D" xlink:href="#MJX-10-TEX-D-211D"></use></g></g><g data-mml-node="mo" transform="translate(722,0)"><use data-c="28" xlink:href="#MJX-10-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1111,0)"><use data-c="1D45B" xlink:href="#MJX-10-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(1711,0)"><use data-c="2C" xlink:href="#MJX-10-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(1989,0)"><use data-c="1D451" xlink:href="#MJX-10-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(2509,0)"><use data-c="29" xlink:href="#MJX-10-TEX-N-29"></use></g></g></g><g data-mml-node="mo" transform="translate(3201,0)"><use data-c="3D" xlink:href="#MJX-10-TEX-N-3D"></use></g><g data-mml-node="msup" transform="translate(4256.8,0)"><g data-mml-node="mi"><use data-c="1D44B" xlink:href="#MJX-10-TEX-I-1D44B"></use></g><g data-mml-node="TeXAtom" transform="translate(936.2,363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="211D" xlink:href="#MJX-10-TEX-D-211D"></use></g></g><g data-mml-node="mo" transform="translate(722,0)"><use data-c="28" xlink:href="#MJX-10-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1111,0)"><use data-c="1D45B" xlink:href="#MJX-10-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(1711,0)"><use data-c="2C" xlink:href="#MJX-10-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(1989,0)"><use data-c="1D451" xlink:href="#MJX-10-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(2509,0)"><use data-c="29" xlink:href="#MJX-10-TEX-N-29"></use></g></g></g><g data-mml-node="msubsup" transform="translate(7292.1,0)"><g data-mml-node="mi"><use data-c="1D44A" xlink:href="#MJX-10-TEX-I-1D44A"></use></g><g data-mml-node="TeXAtom" transform="translate(1136.2,530.4) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="211D" xlink:href="#MJX-10-TEX-D-211D"></use></g></g><g data-mml-node="mo" transform="translate(722,0)"><use data-c="28" xlink:href="#MJX-10-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1111,0)"><use data-c="1D451" xlink:href="#MJX-10-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(1631,0)"><use data-c="2C" xlink:href="#MJX-10-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(1909,0)"><use data-c="1D451" xlink:href="#MJX-10-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(2429,0)"><use data-c="29" xlink:href="#MJX-10-TEX-N-29"></use></g></g><g data-mml-node="TeXAtom" transform="translate(977,-324.2) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D444" xlink:href="#MJX-10-TEX-I-1D444"></use></g></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>Q</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="double-struck">R</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></msup><mo>=</mo><msup><mi>X</mi><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="double-struck">R</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></msup><msubsup><mi>W</mi><mrow data-mjx-texclass="ORD"><mi>Q</mi></mrow><mrow data-mjx-texclass="ORD"><mrow data-mjx-texclass="ORD"><mi mathvariant="double-struck">R</mi></mrow><mo stretchy="false">(</mo><mi>d</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></msubsup></math></mjx-assistive-mml></mjx-container><script type="math/tex">Q^{\Bbb R(n,d)}=X^{\Bbb R(n,d)}W_{Q}^{\Bbb R(d,d)}</script><span>, whose compute complexity is </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.042ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 3112.6 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-11-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-11-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-11-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-11-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-11-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-11-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-11-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-11-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1167,0)"><use data-c="1D45B" xlink:href="#MJX-11-TEX-I-1D45B"></use></g><g data-mml-node="msup" transform="translate(1767,0)"><g data-mml-node="mi"><use data-c="1D451" xlink:href="#MJX-11-TEX-I-1D451"></use></g><g data-mml-node="mn" transform="translate(553,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-11-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2723.6,0)"><use data-c="29" xlink:href="#MJX-11-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><msup><mi>d</mi><mn>2</mn></msup><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(nd^2)</script></li></ul><ul><li><span>Self-attention function: </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="39.016ex" height="3.868ex" role="img" focusable="false" viewBox="0 -1072.4 17245.3 1709.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -1.441ex;"><defs><path id="MJX-12-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-12-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-12-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-12-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-12-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-12-TEX-I-1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path id="MJX-12-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-12-TEX-I-1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path><path id="MJX-12-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-12-TEX-I-1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path><path id="MJX-12-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-12-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-12-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-12-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-12-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path id="MJX-12-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-12-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"></path><path id="MJX-12-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-12-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path id="MJX-12-TEX-N-221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"></path><path id="MJX-12-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-12-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-12-TEX-I-1D434"></use></g><g data-mml-node="mi" transform="translate(750,0)"><use data-c="1D461" xlink:href="#MJX-12-TEX-I-1D461"></use></g><g data-mml-node="mi" transform="translate(1111,0)"><use data-c="1D461" xlink:href="#MJX-12-TEX-I-1D461"></use></g><g data-mml-node="mi" transform="translate(1472,0)"><use data-c="1D452" xlink:href="#MJX-12-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(1938,0)"><use data-c="1D45B" xlink:href="#MJX-12-TEX-I-1D45B"></use></g><g data-mml-node="mi" transform="translate(2538,0)"><use data-c="1D461" xlink:href="#MJX-12-TEX-I-1D461"></use></g><g data-mml-node="mi" transform="translate(2899,0)"><use data-c="1D456" xlink:href="#MJX-12-TEX-I-1D456"></use></g><g data-mml-node="mi" transform="translate(3244,0)"><use data-c="1D45C" xlink:href="#MJX-12-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(3729,0)"><use data-c="1D45B" xlink:href="#MJX-12-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(4329,0)"><use data-c="28" xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(4718,0)"><use data-c="1D444" xlink:href="#MJX-12-TEX-I-1D444"></use></g><g data-mml-node="mo" transform="translate(5509,0)"><use data-c="2C" xlink:href="#MJX-12-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(5953.7,0)"><use data-c="1D43E" xlink:href="#MJX-12-TEX-I-1D43E"></use></g><g data-mml-node="mo" transform="translate(6842.7,0)"><use data-c="2C" xlink:href="#MJX-12-TEX-N-2C"></use></g><g data-mml-node="mi" transform="translate(7287.3,0)"><use data-c="1D449" xlink:href="#MJX-12-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(8056.3,0)"><use data-c="29" xlink:href="#MJX-12-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(8723.1,0)"><use data-c="3D" xlink:href="#MJX-12-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(9778.9,0)"><use data-c="1D460" xlink:href="#MJX-12-TEX-I-1D460"></use></g><g data-mml-node="mi" transform="translate(10247.9,0)"><use data-c="1D45C" xlink:href="#MJX-12-TEX-I-1D45C"></use></g><g data-mml-node="mi" transform="translate(10732.9,0)"><use data-c="1D453" xlink:href="#MJX-12-TEX-I-1D453"></use></g><g data-mml-node="mi" transform="translate(11282.9,0)"><use data-c="1D461" xlink:href="#MJX-12-TEX-I-1D461"></use></g><g data-mml-node="mi" transform="translate(11643.9,0)"><use data-c="1D45A" xlink:href="#MJX-12-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(12521.9,0)"><use data-c="1D44E" xlink:href="#MJX-12-TEX-I-1D44E"></use></g><g data-mml-node="mi" transform="translate(13050.9,0)"><use data-c="1D465" xlink:href="#MJX-12-TEX-I-1D465"></use></g><g data-mml-node="mo" transform="translate(13622.9,0)"><use data-c="28" xlink:href="#MJX-12-TEX-N-28"></use></g><g data-mml-node="mfrac" transform="translate(14011.9,0)"><g data-mml-node="mrow" transform="translate(220,477.2) scale(0.707)"><g data-mml-node="mi"><use data-c="1D444" xlink:href="#MJX-12-TEX-I-1D444"></use></g><g data-mml-node="msup" transform="translate(791,0)"><g data-mml-node="mi"><use data-c="1D43E" xlink:href="#MJX-12-TEX-I-1D43E"></use></g><g data-mml-node="mi" transform="translate(974,363) scale(0.707)"><use data-c="1D447" xlink:href="#MJX-12-TEX-I-1D447"></use></g></g></g><g data-mml-node="msub" transform="translate(392.7,-525.5) scale(0.707)"><g data-mml-node="msqrt"><g transform="translate(853,0)"><g data-mml-node="mi"><use data-c="1D451" xlink:href="#MJX-12-TEX-I-1D451"></use></g></g><g data-mml-node="mo" transform="translate(0,127.1)"><use data-c="221A" xlink:href="#MJX-12-TEX-N-221A"></use></g><rect width="520" height="42.4" x="853" y="884.6"></rect></g><g data-mml-node="mi" transform="translate(1406,-150) scale(0.707)"><use data-c="1D458" xlink:href="#MJX-12-TEX-I-1D458"></use></g></g><rect width="1835.4" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(16087.3,0)"><use data-c="29" xlink:href="#MJX-12-TEX-N-29"></use></g><g data-mml-node="mi" transform="translate(16476.3,0)"><use data-c="1D449" xlink:href="#MJX-12-TEX-I-1D449"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mi>t</mi><mi>t</mi><mi>e</mi><mi>n</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo stretchy="false">(</mo><mi>Q</mi><mo>,</mo><mi>K</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo><mo>=</mo><mi>s</mi><mi>o</mi><mi>f</mi><mi>t</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo stretchy="false">(</mo><mfrac><mrow><mi>Q</mi><msup><mi>K</mi><mi>T</mi></msup></mrow><msub><msqrt><mi>d</mi></msqrt><mi>k</mi></msub></mfrac><mo stretchy="false">)</mo><mi>V</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt d_k})V</script><span>. Computing </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="5.233ex" height="2.343ex" role="img" focusable="false" viewBox="0 -841.7 2312.8 1035.7" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.439ex;"><defs><path id="MJX-13-TEX-I-1D444" d="M399 -80Q399 -47 400 -30T402 -11V-7L387 -11Q341 -22 303 -22Q208 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435Q740 255 592 107Q529 47 461 16L444 8V3Q444 2 449 -24T470 -66T516 -82Q551 -82 583 -60T625 -3Q631 11 638 11Q647 11 649 2Q649 -6 639 -34T611 -100T557 -165T481 -194Q399 -194 399 -87V-80ZM636 468Q636 523 621 564T580 625T530 655T477 665Q429 665 379 640Q277 591 215 464T153 216Q153 110 207 59Q231 38 236 38V46Q236 86 269 120T347 155Q372 155 390 144T417 114T429 82T435 55L448 64Q512 108 557 185T619 334T636 468ZM314 18Q362 18 404 39L403 49Q399 104 366 115Q354 117 347 117Q344 117 341 117T337 118Q317 118 296 98T274 52Q274 18 314 18Z"></path><path id="MJX-13-TEX-I-1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path><path id="MJX-13-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D444" xlink:href="#MJX-13-TEX-I-1D444"></use></g><g data-mml-node="msup" transform="translate(791,0)"><g data-mml-node="mi"><use data-c="1D43E" xlink:href="#MJX-13-TEX-I-1D43E"></use></g><g data-mml-node="mi" transform="translate(974,363) scale(0.707)"><use data-c="1D447" xlink:href="#MJX-13-TEX-I-1D447"></use></g></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Q</mi><msup><mi>K</mi><mi>T</mi></msup></math></mjx-assistive-mml></mjx-container><script type="math/tex">QK^T</script><span> (multiple reshape operation) has complexity </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.042ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 3112.6 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-17-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-17-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-17-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-17-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-17-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-17-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-17-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1167,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-17-TEX-N-32"></use></g></g><g data-mml-node="mi" transform="translate(2203.6,0)"><use data-c="1D451" xlink:href="#MJX-17-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(2723.6,0)"><use data-c="29" xlink:href="#MJX-17-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>d</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(n^2d)</script><span>, and post-multiplying the result with </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="1.74ex" height="1.595ex" role="img" focusable="false" viewBox="0 -683 769 705" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.05ex;"><defs><path id="MJX-15-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-15-TEX-I-1D449"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>V</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">V</script><span> has complexity </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.042ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 3112.6 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-17-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-17-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-17-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-17-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-17-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-17-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-17-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1167,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-17-TEX-N-32"></use></g></g><g data-mml-node="mi" transform="translate(2203.6,0)"><use data-c="1D451" xlink:href="#MJX-17-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(2723.6,0)"><use data-c="29" xlink:href="#MJX-17-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>d</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(n^2d)</script><span> as well. Hence the compute complexity is </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="7.042ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 3112.6 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-17-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-17-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-17-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-17-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-17-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-17-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-17-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-17-TEX-N-28"></use></g><g data-mml-node="msup" transform="translate(1167,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-17-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-17-TEX-N-32"></use></g></g><g data-mml-node="mi" transform="translate(2203.6,0)"><use data-c="1D451" xlink:href="#MJX-17-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(2723.6,0)"><use data-c="29" xlink:href="#MJX-17-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mi>d</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(n^2d)</script></li></ul><p><span>Therefore, the total complexity of the layer is </span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="13.329ex" height="2.452ex" role="img" focusable="false" viewBox="0 -833.9 5891.6 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.566ex;"><defs><path id="MJX-18-TEX-N-4F" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM467 647Q426 665 388 665Q360 665 331 654T269 620T213 549T179 439Q174 411 174 354Q174 144 277 61Q327 20 385 20H389H391Q474 20 537 99Q603 188 603 354Q603 411 598 439Q577 592 467 647Z"></path><path id="MJX-18-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-18-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-18-TEX-I-1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path><path id="MJX-18-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path id="MJX-18-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"></path><path id="MJX-18-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="4F" xlink:href="#MJX-18-TEX-N-4F"></use></g></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="28" xlink:href="#MJX-18-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(1167,0)"><use data-c="1D45B" xlink:href="#MJX-18-TEX-I-1D45B"></use></g><g data-mml-node="msup" transform="translate(1767,0)"><g data-mml-node="mi"><use data-c="1D451" xlink:href="#MJX-18-TEX-I-1D451"></use></g><g data-mml-node="mn" transform="translate(553,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-18-TEX-N-32"></use></g></g><g data-mml-node="mo" transform="translate(2945.8,0)"><use data-c="2B" xlink:href="#MJX-18-TEX-N-2B"></use></g><g data-mml-node="msup" transform="translate(3946,0)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-18-TEX-I-1D45B"></use></g><g data-mml-node="mn" transform="translate(633,363) scale(0.707)"><use data-c="32" xlink:href="#MJX-18-TEX-N-32"></use></g></g><g data-mml-node="mi" transform="translate(4982.6,0)"><use data-c="1D451" xlink:href="#MJX-18-TEX-I-1D451"></use></g><g data-mml-node="mo" transform="translate(5502.6,0)"><use data-c="29" xlink:href="#MJX-18-TEX-N-29"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow data-mjx-texclass="ORD"><mi data-mjx-auto-op="false" mathvariant="normal">O</mi></mrow><mo stretchy="false">(</mo><mi>n</mi><msup><mi>d</mi><mn>2</mn></msup><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mi>d</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container><script type="math/tex">\Omicron(nd^2+n^2d)</script><span>. </span><mark><span>BUT!!</span></mark><span>, as mentioned above, the claimed compute complexity in paper is only the self-attention function, while point-wise feed-forward complexity is not included.</span></p><p><span>So  in </span><code>Table 1</code><span> is strictly the attention mechanism, it is not the complexity of the Transformer. Authors are very well aware about the complexity of their model (I quote):</span></p><blockquote><p><span>Separable convolutions [6], however, decrease the complexity considerably, to </span><code>O(k·n·d + n·d^2)</code><span>. Even with </span><code>k = n</code><span>, however, the complexity of a separable convolution is equal to the combination of a self-attention layer and a point-wise feed-forward layer, the approach we take in our model.</span></p></blockquote><h2 id='3-personal-view'><span>3. Personal view</span></h2><p><a href='https://stackoverflow.com/questions/65703260/computational-complexity-of-self-attention-in-the-transformer-model'><span>Quote</span></a><span>:</span></p><blockquote><p><span>Now, to understand what </span><code>Table 1</code><span> contains please keep in mind how most people scan papers: they read title, abstract, then look at figures and tables. Only then if the results were interesting, they read the paper more thoroughly. So, the main idea of the </span><code>Attention is all you need</code><span> paper was to replace the RNN layers completely with attention mechanism in seq2seq setting because RNNs were really slow to train. If you look at the </span><code>Table 1</code><span> in this context, you see that it compares RNN, CNN and Attention and highlights the motivation for the paper: using Attention should have been beneficial over RNNs and CNNs. It should have been advantageous in 3 aspects: constant amount of calculation steps, constant amount of operations </span><strong><span>and</span></strong><span> lower computational complexity for usual Google setting, where </span><code>n ~= 100</code><span> and </span><code>d ~= 1000</code><span>. </span></p></blockquote></div></div>
+</body>
+</html>

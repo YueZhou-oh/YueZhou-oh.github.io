@@ -1,0 +1,91 @@
+# [DeepSpeed](https://www.deepspeed.ai/)
+## Overview
+- The DeepSpeed API is a lightweight wrapper on PyTorch.
+- **Speed**: DeepSpeed achieves high performance and fast convergence through a combination of efficiency optimizations on compute/communication/memory/IO and effectiveness optimizations on advanced hyperparameter tuning and optimizers.
+- **Memory efficiency**: DeepSpeed provides memory-efficient data parallelism and enables training models without model parallelism. DeepSpeed reduces the training memory footprint through a novel solution called Zero Redundancy Optimizer (ZeRO).
+- **Scalability**: DeepSpeed supports efficient data parallelism, model parallelism, pipeline parallelism and their combinations, which we call 3D parallelism.
+- **Communication efficiency**: Pipeline parallelism of DeepSpeed reduce communication volume during distributed training, 1-bit Adam, 0/1 Adam and 1-bit LAMB reduce communication volume by up to 26x while achieving similar convergence efficiency to Adam.
+- **Data efficiency**: DeepSpeed Data Efficiency Library provides efficient data sampling via curriculum learning and efficient data routing via random layerwise token dropping.
+
+## [Configuration Json](https://www.deepspeed.ai/docs/config-json/)
+- train_batch_size, equals train_micro_batch_size_per_gpu \* gradient_accumulation_steps \* number_of_GPUs, integer
+- optimizer, dictionary
+- Scheduler parameter, dictionary, DeepSpeed calls the step() method of the scheduler at every training step when model_engine.step() is executed. including `LRRangeTest, OneCycle, WarmupLR, WarmupDecayLR`
+- communication options, including prescale_gradients, gradient_predivide_factor, sparse_gradients
+- FP16 training options, dictionary, this mode cannot be combined with the amp mode
+- BFLOAT16 training options, dictionary, this mode cannot be combined with the amp mode and FP16 mode
+- Automatic mixed precision (AMP) training options, Is not compatible with fp16 mode above or ZeRO. 
+- Gradient Clipping, float
+- ZeRO Optimizations for FP16 Training
+- Parameter offloading, dictionary, Available only with ZeRO stage 3
+- Optimizer offloading, dictionary, Enabling and configuring ZeRO optimization of offloading optimizer computation to CPU and state to CPU/NVMe. CPU offloading is available with ZeRO stage 1, 2, 3. NVMe offloading is available only with ZeRO stage 3.
+- Asynchronous I/O, dictionary, Configuring the asynchronous I/O module for offloading parameter and optimizer states to persistent (NVMe) storage. This module uses Linux native asynchronous I/O (libaio).
+- Autotuning
+- Logging
+- Flops Profiler
+- Activation Checkpointing, Offloads activations to CPU
+- Sparse Attention, including "dense", "fixed", "bigbird", "bslongformer", and "variable" mode
+- Data Efficiency, the Library includes two techniques: curriculum learning and random layerwise token dropping (random-LTD)
+- Monitoring Module 
+- Communication Logging
+- Compression, has seven different components, including layer reduction, weight quantization, activation quantization, sparse pruning, row pruning, head pruning, and channel pruning. 
+- Checkpoint options
+- Data Type options
+
+## [Features](https://www.deepspeed.ai/training/)
+- Distributed Training with Mixed Precision
+    - 16-bit mixed precision
+    - Single-GPU/Multi-GPU/Multi-Node
+- Model Parallelism
+    - Support for Custom Model Parallelism
+    - Integration with Megatron-LM
+- Pipeline Parallelism
+    - 3D Parallelism
+- The Zero Redundancy Optimizer
+    - Optimizer State and Gradient Partitioning
+    - Activation Partitioning
+    - Constant Buffer Optimization
+    - Contiguous Memory Optimization
+- ZeRO-Offload
+    - Leverage both CPU/GPU memory for model training
+    - Support 10B model training on a single GPU
+- Ultra-fast dense transformer kernels
+- Sparse attention
+    - Memory- and compute-efficient sparse kernels
+    - Support 10x long sequences than dense
+    - Flexible support to different sparse structures
+- 1-bit Adam, 0/1 Adam and 1-bit LAMB
+    - Custom communication collective
+    - Up to 26x communication volume saving
+- Additional Memory and Bandwidth Optimizations
+    - Smart Gradient Accumulation
+    - Communication/Computation Overlap
+- Training Features
+    - Simplified training API
+    - Gradient Clipping
+    - Automatic loss scaling with mixed precision
+- Training Optimizers
+    - Fused Adam optimizer and arbitrary torch.optim.Optimizer
+    - Memory bandwidth optimized FP16 Optimizer
+    - Large Batch Training with LAMB Optimizer
+    - Memory efficient Training with ZeRO Optimizer
+    - CPU-Adam
+- Training Agnostic Checkpointing
+- Advanced Parameter Search
+    - Learning Rate Range Test
+    - 1Cycle Learning Rate Schedule
+- Simplified Data Loader
+- Data Efficiency
+    - Efficient data sampling via curriculum learning and efficient data routing via random layerwise token dropping
+    - Up to 2x data and 2x time saving during GPT-3/BERT pretraining and GPT/ViT finetuning
+    - Or further improve model quality under the same data/time
+- Curriculum Learning
+    - A curriculum learning-based data pipeline that presents easier or simpler examples earlier during training
+    - Stable and 3.3x faster GPT-2 pre-training with 8x/4x larger batch size/learning rate while maintaining token-wise convergence speed
+    - Complementary to many other DeepSpeed features
+    - Note that the Data Efficiency Library above provides more general curriculum learning support. This legacy curriculum learning feature is still supported but we recommend to use the Data Efficiency Library.
+- Progressive Layer Dropping
+    - Efficient and robust compressed training
+    - Up to 2.5x convergence speedup for pre-training
+- Performance Analysis and Debugging
+- Mixture of Experts (MoE)
