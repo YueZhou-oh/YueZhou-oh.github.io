@@ -1,0 +1,703 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Diffusion</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="97337a4d-c13c-4cf5-864b-f085fa508ff8" class="page sans"><header><h1 class="page-title">Diffusion</h1><p class="page-description"></p></header><div class="page-body"><p id="fc851922-7918-451d-b049-695157bee444" class="">
+</p><nav id="9cd96dea-9f8d-4d9d-aa6f-dca405611236" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0a29dd66-d2b6-43bb-847c-365756d16ecd">DDPM</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0e46b8d4-e54b-41a5-8244-404e9e32c064">DDIM</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#68916d0e-7aee-415a-806a-aca74dc9f7ce">Classifier Guidance Diffusion</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#036c507f-f87c-4d67-884a-05c2d1830adc">Classifier-Free Diffusion Guidance</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#29cd6831-9134-46e4-ab42-97fbeed868f7">Efficient sampling</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a77e36b-dbdd-44b3-b581-ac46c91a2a27">Transformer-based Diffusion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#01d7a475-a342-4444-b980-a34d52e9e446">Stable Diffusion</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#05be5525-0e0e-4350-8bf8-cdbba3839b29">DALL.E 2</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#89b55f6c-e58f-4ef1-942f-53916d6d3a7a">Imagen</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#51d7c4fb-065e-48cf-94e6-51001f17c4fe">Sora</a></div></nav><h2 id="0a29dd66-d2b6-43bb-847c-365756d16ecd" class="">DDPM</h2><blockquote id="6fa1e7d1-6699-4020-b617-373703713ccd" class="">The Ornstein–Uhlenbeck process (OUP) is a unique <strong>Gaussian, stationary diffusion process</strong>. Originating as a model for the Brownian motion of a particle, it has a wide range of applications in biology and elsewhere.</blockquote><figure id="c59d082d-3542-4927-b033-847efb5b3f92"><a href="https://yuezhou-oh.github.io/blog/paperreading/Understanding_diffusion_model.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">20210914-DDPM完全解读-周阅</div><div class="bookmark-description">DDPM完全解读名词解析预定义Diffusion ProcessReverse ProcessLoss推导q(x_T|x_0)q(x_{t-1}|x_t,x_0)p_{\theta}(x_{t-1}|x_t)首先考虑std其次考虑mean整合Reference</div></div><div class="bookmark-href">https://yuezhou-oh.github.io/blog/paperreading/Understanding_diffusion_model.html</div></div></a></figure><p id="0e80fd47-bbcd-4339-a435-80370dd1cc4f" class="">Evaluation:</p><ul id="791b9019-fa0e-4f1e-b9b4-b21bed5c0781" class="bulleted-list"><li style="list-style-type:disc">Inception Score (IS):  it measures how well a model captures the full ImageNet class distribution while still producing individual samples that are convincing examples of a single class.</li></ul><ul id="14dbbc6d-6052-40cd-9f4a-b666d450d0e9" class="bulleted-list"><li style="list-style-type:disc">Fréchet Inception Distance (FID):  provides a symmetric measure of the distance between two<br/>image distributions in the latent space<br/></li></ul><h1 id="0e46b8d4-e54b-41a5-8244-404e9e32c064" class="">DDIM</h1><p id="9c379f51-ebcd-4c4a-9b1b-ce9dc2249762" class="">Denoising Diffusion Implicit Model: deterministic sampling methods</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bcf8462d-6cdd-4950-be45-dd0af080089a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">保证noising/diffusion的目标分布与DDPM一致（<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>t</mi></msub><mi mathvariant="normal">∣</mi><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="double-struck">N</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>t</mi></msub><mo separator="true">;</mo><msqrt><mover accent="true"><msub><mi>α</mi><mi>t</mi></msub><mo>^</mo></mover></msqrt><msub><mi>x</mi><mn>0</mn></msub><mo separator="true">,</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mover accent="true"><msub><mi>α</mi><mi>t</mi></msub><mo>^</mo></mover><mo stretchy="false">)</mo><mi>I</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">q(x_t|x_0)=\Bbb N(x_t;\sqrt{\hat {\alpha_t}}x_0,(1-\hat {\alpha_t})I)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1072em;vertical-align:-0.25em;"></span><span class="mord mathbb">N</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8572em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-2.8172em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1828em;"><span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.25em;"><span class="mord">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>），构建新的采样分布<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mi mathvariant="normal">∣</mi><msub><mi>x</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(x_{t-1}|x_t,x_0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2806em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>替代马尔科夫链，可以无需依赖过长的MC，并可以通过trajectory控制reverse生成路径，加快生成速度，trade off between computation  and sample quality</div></figure><figure id="dbf4eb9d-b2b8-4c63-aebc-cee37bc1d980" class="image"><a href="DiffusionOverview/Untitled.png"><img style="width:1161px" src="DiffusionOverview/Untitled.png"/></a></figure><figure id="6dcfa1bb-09f4-4cfb-b1a4-934bf2e3812b" class="image"><a href="DiffusionOverview/Untitled%201.png"><img style="width:708px" src="DiffusionOverview/Untitled%201.png"/></a></figure><figure id="d7575c82-297b-4275-a071-400b8e7b8fd5"><a href="https://arxiv.org/abs/2010.02502" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Denoising Diffusion Implicit Models</div><div class="bookmark-description">Denoising diffusion probabilistic models (DDPMs) have achieved high quality image generation without adversarial training, yet they require simulating a Markov chain for many steps to produce a...</div></div><div class="bookmark-href"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png" class="icon bookmark-icon"/>https://arxiv.org/abs/2010.02502</div></div><img src="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png" class="bookmark-image"/></a></figure><h1 id="68916d0e-7aee-415a-806a-aca74dc9f7ce" class="">Classifier Guidance Diffusion</h1><blockquote id="618d9427-d26f-4389-a2e6-6c165e87de05" class="">论文中包括深入浅出的对background和previous work的review和theoretical illustration，现在大多数论文里都用协方差矩阵表示log高斯分布（<style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><msup><mo stretchy="false">)</mo><mi>T</mi></msup><msup><mo>∑</mo><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">(</mo><mi>x</mi><mo>−</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">logp(x)=-\frac {1} {2} (x-\mu)^T\sum^{-1}(x-\mu)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord">−</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.204em;vertical-align:-0.25em;"></span><span class="mord mathnormal">μ</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.954em;"><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">μ</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>）</blockquote><ul id="54de4efd-49b4-4505-baf8-d79f83b615a9" class="bulleted-list"><li style="list-style-type:disc">2021年OpenAI在「<em>Diffusion Models Beat GANs on Image Synthesis」</em>中提出Classifier Guidance，使得扩散模型<strong>能够按类生成</strong>。</li></ul><ul id="65b8bd33-9d6e-42c9-ab2a-5ee1c42cfe76" class="bulleted-list"><li style="list-style-type:disc">后来「More Control for Free! Image Synthesis with Semantic Diffusion Guidance」把Classifier Guidance推广到了Semantic Diffusion，使得扩散模型<strong>可以按图像、按文本和多模态条件来生成，</strong>例如，风格化可以通过content和style两者共同进行引导，这些都是通过梯度引导来实现。</li></ul><p id="6ed9ceb7-0475-4d4f-8413-a99a889b0ab3" class="">训练与推理过程中，</p><ul id="763af874-22d8-42f6-b0d6-134996b2262b" class="bulleted-list"><li style="list-style-type:disc">训练时，Classifier Guidance<strong>需额外添加一个classifier的梯度来引导，guide the diffusion sampling process towards an arbitrary class label</strong></li></ul><ul id="2e52a0fa-9b11-4953-bfb4-7df9ec4fdd72" class="bulleted-list"><li style="list-style-type:disc"><strong>推理时每一步都需要额外计算classifier的梯度，</strong>Our classifier architecture is simply the downsampling trunk of the UNet model with an attention pool at the 8x8 layer to produce the final output</li></ul><p id="4ca9ddc9-7d30-4aff-b81c-42e3fdaa9646" class="">
+</p><figure id="29028af3-8493-4ab6-9b1c-6be7e2c3c0e4" class="image"><a href="DiffusionOverview/Untitled%202.png"><img style="width:755px" src="DiffusionOverview/Untitled%202.png"/></a></figure><figure id="aa3ce7a5-eef2-4567-9dfe-708b2fee75be"><a href="https://arxiv.org/abs/2105.05233" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Diffusion Models Beat GANs on Image Synthesis</div><div class="bookmark-description">We show that diffusion models can achieve image sample quality superior to the current state-of-the-art generative models. We achieve this on unconditional image synthesis by finding a better...</div></div><div class="bookmark-href"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png" class="icon bookmark-icon"/>https://arxiv.org/abs/2105.05233</div></div><img src="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png" class="bookmark-image"/></a></figure><p id="d1039262-86b0-45dd-878a-662291d9ada8" class="">
+</p><h1 id="036c507f-f87c-4d67-884a-05c2d1830adc" class="">Classifier-Free Diffusion Guidance</h1><figure id="061d910e-00c5-463a-b6d5-2ec2ead04419"><a href="https://openreview.net/pdf?id=qw8AKxfYbI" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://openreview.net/pdf?id=qw8AKxfYbI</div></div></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="84d2245f-6e02-4e93-baf8-621cda399f53"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Classifier-Free Guidance的核心是通过一个隐式分类器来替代显示分类器，而无需直接计算显式分类器及其梯度</strong>。</div></figure><p id="e8213c24-b966-4a2d-91c3-14251f1691f5" class=""><strong>Classifier Guidance 使用显式的分类器引导条件生成有几个问题</strong>：</p><ul id="45a0aa53-2395-45f8-8e98-21a4dd772ae8" class="bulleted-list"><li style="list-style-type:disc">一是需要额外训练一个噪声版本的图像分类器（实际实现上大多是基于diffusion model的部分网络加上classify layer组成）。</li></ul><ul id="67e0427d-99fc-4548-9e34-3fe8323e97db" class="bulleted-list"><li style="list-style-type:disc">二是该分类器的质量会影响按类别生成的效果。</li></ul><ul id="089c1c13-b00e-45d4-969f-e3396bc331e3" class="bulleted-list"><li style="list-style-type:disc">三是通过梯度更新会导致对抗攻击效应（生成时用到了梯度）</li></ul><blockquote id="56095c81-788d-410b-bee7-ffd94c7edd33" class="">In initial experiments with unconditional ImageNet models, we found it necessary to scale the<br/>classifier gradients by a constant factor larger than 1. When using a scale of 1, we observed that the classifier assigned reasonable probabilities (around 50%) to the desired classes for the final samples, but these samples did not match the intended classes upon visual inspection. Scaling up the classifier gradients remedied this problem, and the class probabilities from the classifier increased to nearly 100%.<br/></blockquote><p id="dccbc157-2fc7-46df-bbd9-20b3c7b630e9" class="">
+</p><p id="b7fcc4ca-6528-4e55-be0f-e6850972e724" class="">2022年谷歌提出<strong>Classifier-Free Guidance diffusion方</strong>案，可以规避上述问题，而且可以通过调节引导权重，控制生成图像的逼真性和多样性的平衡，<strong>DALL·E 2和Imagen等模型都是以它为基础进行训练和推理。</strong></p><ul id="92fdbbc7-fed4-4739-82bc-272931e3bbab" class="bulleted-list"><li style="list-style-type:disc"><strong>训练时，Classifier-Free Guidance需要训练两个模型，一个是无条件生成模型，另一个是条件生成模型。</strong>但这两个模型可以用同一个模型表示，<strong>训练时只需要以一定概率将条件置空即可。</strong></li></ul><ul id="b377091f-8339-4570-9bf4-dd8c54534101" class="bulleted-list"><li style="list-style-type:disc"><strong>推理时，最终结果可以由条件生成和无条件生成的线性外推获得，生成效果可以通过引导系数调节，控制生成样本的逼真性和多样性的平衡。</strong></li></ul><p id="f2c586cb-befb-4a9c-a2d1-d34068760011" class="">
+</p><figure id="2e67c8b6-da66-49b4-b33b-1bd0bf2eae6f" class="image"><a href="DiffusionOverview/Untitled%203.png"><img style="width:1142px" src="DiffusionOverview/Untitled%203.png"/></a></figure><figure id="90ef14b8-7d9f-4956-8244-708a9ead6a3b" class="image"><a href="DiffusionOverview/Untitled%204.png"><img style="width:1139px" src="DiffusionOverview/Untitled%204.png"/></a></figure><p id="7a611772-1bc7-4474-a511-34680e3e0096" class="">
+</p><h1 id="29cd6831-9134-46e4-ab42-97fbeed868f7" class="">Efficient sampling</h1><p id="80fcb42d-409a-43d9-8caf-245f28225340" class="">生成速度主要受step的影响，可以从多个方面提升生成速度：</p><ul id="138ad5f3-94b3-499b-a168-dbdfe05aa879" class="bulleted-list"><li style="list-style-type:disc">跨step生成和结合，减少step次数，如DDIM方法</li></ul><ul id="83e030e4-c8f7-4b42-909f-796e090f3b84" class="bulleted-list"><li style="list-style-type:disc">模型中前一个step的latent vector的重复利用，减少部分step中的部分计算量</li></ul><ul id="6b3de92d-b556-4fa4-9d88-a84bb4ed2c5d" class="bulleted-list"><li style="list-style-type:disc">具体算法上SDE solver（Stochastic Differential Equations），ODE solver（Ordinary Differential Equations），Knowledge Distillation等</li></ul><p id="7c5e6f9a-1f69-465e-aa4d-278973ccdf72" class="">
+</p><figure id="9d29add8-e15e-45a0-98bb-6f49f3e66d9f" class="image"><a href="DiffusionOverview/Untitled%205.png"><img style="width:1140px" src="DiffusionOverview/Untitled%205.png"/></a></figure><figure id="43045b58-6ab9-4cc6-ab3a-16174377cc7e"><a href="https://arxiv.org/pdf/2209.00796.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://arxiv.org/pdf/2209.00796.pdf</div></div></a></figure><figure id="5f6dae00-ac93-4c93-84c4-2b7071f731c4"><a href="https://arxiv.org/abs/2312.09608" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Faster Diffusion: Rethinking the Role of UNet Encoder in Diffusion Models</div><div class="bookmark-description">One of the key components within diffusion models is the UNet for noise prediction. While several works have explored basic properties of the UNet decoder, its encoder largely remains unexplored....</div></div><div class="bookmark-href"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png" class="icon bookmark-icon"/>https://arxiv.org/abs/2312.09608</div></div><img src="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png" class="bookmark-image"/></a></figure><p id="318289cb-9a04-48b9-9eb5-7bde43a80aea" class="">
+</p><h1 id="4a77e36b-dbdd-44b3-b581-ac46c91a2a27" class="">Transformer-based Diffusion</h1><h2 id="01d7a475-a342-4444-b980-a34d52e9e446" class="">Stable Diffusion</h2><figure id="cd627a26-759e-484d-aa9d-cf748350dcc1"><a href="https://jalammar.github.io/illustrated-stable-diffusion/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">The Illustrated Stable Diffusion</div><div class="bookmark-description">Translations: Chinese, Vietnamese.   (V2 Nov 2022: Updated images for more precise description of forward diffusion. A few more images in this version)  AI image generation is the most recent AI capability blowing people’s minds (mine included). The ability to create striking visuals from text descriptions has a magical quality to it and points clearly to a shift in how humans create art. The release of Stable Diffusion is a clear milestone in this development because it made a high-performance model available to the masses (performance in terms of image quality, as well as speed and relatively low resource/memory requirements).    After experimenting with AI image generation, you may start to wonder how it works.  This is a gentle introduction to how Stable Diffusion works.            Stable Diffusion is versatile in that it can be used in a number of different ways. Let’s focus at first on image generation from text only (text2img). The image above shows an example text input and the resulting generated image (The actual complete prompt is here). Aside from text to image, another main way of using it is by making it alter images (so inputs are text + image).</div></div><div class="bookmark-href">https://jalammar.github.io/illustrated-stable-diffusion/</div></div></a></figure><ul id="b783f9a4-7a1f-49b4-aff8-3458b1ef2cf3" class="bulleted-list"><li style="list-style-type:disc">两大模块，autoencoder和diffusion model的结合<ul id="73f268e2-e9d6-4483-a590-9a33ae911ba0" class="bulleted-list"><li style="list-style-type:circle">autoencoder主要用于加速生成过程，通过在最开始把图像encoder到更低维的latent space，可加速diffusion生成过程，生成完之后再decoder回更高维的图像维度</li></ul><ul id="79ac6191-d022-4e36-a917-2d1c41ebb601" class="bulleted-list"><li style="list-style-type:circle">通过diffusion的denoising过程，生成图像<ul id="53055d25-117c-4a35-89b8-571de10a256a" class="bulleted-list"><li style="list-style-type:square">diffusion model由unet融合attention构成，输入没有文本时，就是self-attention；</li></ul><ul id="111bef4a-1e70-4905-92ae-a1d999c94435" class="bulleted-list"><li style="list-style-type:square">当输入包含文本时，即有condition时，根据文本生成；文本通过clip等LM encode之后，attention模块就是cross-attention</li></ul><ul id="6c74b004-3adb-4a5d-84be-3e5e83d33078" class="bulleted-list"><li style="list-style-type:square">此外，diffusion model的输入还包含diffusion timestep的embedding vector</li></ul></li></ul></li></ul><figure id="e9b19485-47ef-46ba-8507-8861f3c6e636" class="image"><a href="DiffusionOverview/67F8C833-1B28-4C17-A3E3-E1920EA930A0.jpeg"><img style="width:2123px" src="DiffusionOverview/67F8C833-1B28-4C17-A3E3-E1920EA930A0.jpeg"/></a></figure><figure id="1506d620-43f2-4046-bb32-4e50adcd54ba" class="image"><a href="DiffusionOverview/Untitled%206.png"><img style="width:1394px" src="DiffusionOverview/Untitled%206.png"/></a></figure><hr id="24fd3dec-3d82-49ac-bdc7-033ee0987aaa"/><figure id="848c8f2c-2171-40ba-b46b-f45d86a6c162" class="image"><a href="DiffusionOverview/Untitled%207.png"><img style="width:1440px" src="DiffusionOverview/Untitled%207.png"/></a></figure><figure id="01b92a95-2847-40b8-be09-819a796ed5b2" class="image"><a href="DiffusionOverview/Untitled%208.png"><img style="width:2804px" src="DiffusionOverview/Untitled%208.png"/></a></figure><p id="ee58428c-26de-40f0-b794-fb90a76e959e" class="">
+</p><ul id="1a2382a4-8717-4cb5-ba34-1e267122be01" class="bulleted-list"><li style="list-style-type:disc">针对diffusion based image or video generation, 强调了curated or high quality training data的重要性</li></ul><ul id="4bf770fb-410d-4681-9173-067fe71dbbdc" class="bulleted-list"><li style="list-style-type:disc">针对CLIP的研究也强调了high quality data and data augmentation的重要性</li></ul><p id="0f866be1-82ef-4966-b09d-95920b86f0d7" class="">
+</p><h2 id="05be5525-0e0e-4350-8bf8-cdbba3839b29" class="">DALL.E 2</h2><p id="86080543-c392-4f87-8b4d-8a5a49d1f761" class="">OpenAI DALL-E 2 是一种基于语言的人工智能图像生成器，可以根据文本提示创建高质量的图像和艺术作品。</p><p id="130d89ad-2a52-4f4d-bca1-4581d9794cb1" class="">CLIP+Diffusion</p><figure id="cce8ca7b-bdf2-4f23-94f8-fd78481a38cc" class="image"><a href="DiffusionOverview/Untitled%209.png"><img style="width:896px" src="DiffusionOverview/Untitled%209.png"/></a></figure><figure id="fe76605d-8873-4dca-ab19-4764b21d2cda"><a href="https://cdn.openai.com/papers/dall-e-2.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://cdn.openai.com/papers/dall-e-2.pdf</div></div></a></figure><p id="2fd8ca38-07fa-4397-8a71-aab01c95098b" class="">
+</p><h2 id="89b55f6c-e58f-4ef1-942f-53916d6d3a7a" class="">Imagen</h2><p id="324b1e00-7206-48b2-a5b5-528378d48228" class="">Google Text-to-Image Diffusion Model</p><figure id="ce1159c4-5fad-421c-af0d-92fbd9bac0f1"><a href="https://arxiv.org/pdf/2205.11487.pdf" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">https://arxiv.org/pdf/2205.11487.pdf</div></div></a></figure><figure id="56721839-3a6d-497b-a89c-8fe4c430fa8b" class="image"><a href="DiffusionOverview/Untitled%2010.png"><img style="width:999px" src="DiffusionOverview/Untitled%2010.png"/></a></figure><p id="71d82759-cb0b-4955-8ec0-11dd4550625a" class="">
+</p><h2 id="51d7c4fb-065e-48cf-94e6-51001f17c4fe" class="">Sora</h2><p id="b131e13a-07c4-4138-a2d8-aa43abba3e6e" class="">Sora is a generalist model of visual data—it can generate videos and images spanning diverse durations, aspect ratios and resolutions, up to a full minute of high definition video.</p><p id="9ca8d5c0-a364-49bc-b5e7-ddc1187b0d63" class="">
+</p><ul id="d9519d8c-55eb-4347-91c6-958a1dfa4fb6" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Turning visual data into patches</strong></strong></li></ul><ul id="86d9a0ae-d3ad-4939-ad3e-6ef2f96de4ea" class="bulleted-list"><li style="list-style-type:disc"><strong>Video compression network，</strong>We train a network that reduces the dimensionality of visual data.<a href="https://openai.com/research/video-generation-models-as-world-simulators#fn-20">20</a> This network takes raw video as input and outputs a latent representation that is compressed both temporally and spatially.</li></ul><ul id="76ea37fd-189b-486a-9b10-d3d3afe873ed" class="bulleted-list"><li style="list-style-type:disc"><strong>Spacetime latent patches，</strong>Given a compressed input video, we extract a sequence of spacetime patches which act as transformer tokens.</li></ul><ul id="6ed1cc58-e09f-44d0-9014-93b59c939ca9" class="bulleted-list"><li style="list-style-type:disc"><strong>Scaling transformers for video generation，</strong>Sora is a diffusion mode; given input noisy patches (and conditioning information like text prompts), it’s trained to predict the original “clean” patches. Importantly, Sora is a diffusion <em>transformer</em>.</li></ul><ul id="8321242f-b975-4fe1-afc9-c3a22a8bfdc9" class="bulleted-list"><li style="list-style-type:disc"><strong>Variable durations, resolutions, aspect ratios，Past approaches to image and video generation typically resize, crop or trim videos to a standard size—e.g., 4 second videos at 256x256 resolution. We find that instead training on data at its native size provides several benefits.</strong><ul id="3ccfc0dd-0581-4cd7-96cc-d8d25f1ab636" class="bulleted-list"><li style="list-style-type:circle"><strong><strong>Sampling flexibility</strong></strong></li></ul><ul id="7785ff1d-b26d-476c-9a58-c5aeb297a3fc" class="bulleted-list"><li style="list-style-type:circle"><strong><strong>Improved framing and composition</strong></strong></li></ul></li></ul><ul id="accb1035-bc7d-4b9b-a311-64dbd8d1acd4" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Language understanding</strong></strong><ul id="5222ee04-6202-4b62-9d63-2b858d4bf156" class="bulleted-list"><li style="list-style-type:circle">We apply the re-captioning technique introduced in DALL·E 3 to videos. We first train a highly descriptive captioner model and then use it to produce text captions for all videos in our training set. We find that training on highly descriptive video captions improves text fidelity as well as the overall quality of videos.</li></ul><ul id="e11a03bc-0010-4a29-89ce-cede89e93c58" class="bulleted-list"><li style="list-style-type:circle">we also leverage GPT to turn short user prompts into longer detailed captions that are sent to the video model.</li></ul></li></ul><ul id="a0ff09fd-2800-40e4-abea-8134068e928a" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Prompting with images and videos</strong></strong></li></ul><ul id="f75295d6-d1be-4705-89c4-8ad55a9f455c" class="bulleted-list"><li style="list-style-type:disc"><strong>Video-to-video editing，</strong>we apply SDEdit to Sora. This technique enables Sora to transform  the styles and environments of input videos zero-shot.</li></ul><ul id="23157f93-70fb-4d4b-80d0-f50b84b2b717" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Connecting videos</strong></strong></li></ul><ul id="c2f4f187-aa7f-42a3-9a4f-13187581f26b" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Image generation capabilities</strong></strong></li></ul><ul id="32beac45-0885-40a1-b4a8-f16979ccec9f" class="bulleted-list"><li style="list-style-type:disc"><strong><strong>Emerging simulation capabilities</strong></strong><ul id="9d5883a8-c439-4cdb-af13-55fbd01a239b" class="bulleted-list"><li style="list-style-type:circle"><strong>3D consistency.</strong> Sora can generate videos with dynamic camera motion. As the camera shifts and rotates, people and scene elements move consistently through three-dimensional space.</li></ul><ul id="8c4d21aa-c689-4989-b90f-23fd6bc6adb2" class="bulleted-list"><li style="list-style-type:circle"><strong>Long-range coherence and object permanence.</strong></li></ul><ul id="f00fab22-2c77-4eca-923a-607e6e4e1032" class="bulleted-list"><li style="list-style-type:circle"><strong>Interacting with the world.</strong></li></ul><ul id="9ef0ca6e-5552-425d-ba40-47955228738b" class="bulleted-list"><li style="list-style-type:circle"><strong>Simulating digital worlds.</strong></li></ul></li></ul><ul id="7ae99480-5f5a-45fc-86bc-e0e548891627" class="bulleted-list"><li style="list-style-type:disc">Limitation：Sora currently exhibits numerous limitations as a simulator. For example, it does not accurately model the physics of many basic interactions, like glass shattering. Other interactions, like eating food, do not always yield correct changes in object state.</li></ul><p id="199e3091-2d6b-45fd-809e-f73de3751cb0" class="">
+</p><figure id="2373095c-2efb-4b91-8eec-89d4e9ed00cf" class="image"><a href="DiffusionOverview/Untitled%2011.png"><img style="width:2031px" src="DiffusionOverview/Untitled%2011.png"/></a></figure><figure id="de400b43-9205-4355-a5a1-0f1deef522e3"><a href="https://openai.com/research/video-generation-models-as-world-simulators" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Video generation models as world simulators</div><div class="bookmark-description">We explore large-scale training of generative models on video data. Specifically, we train text-conditional diffusion models jointly on videos and images of variable durations, resolutions and aspect ratios. We leverage a transformer architecture that operates on spacetime patches of video and image latent codes. Our largest model, Sora, is capable of generating a minute of high fidelity video. Our results suggest that scaling video generation models is a promising path towards building general purpose simulators of the physical world.</div></div><div class="bookmark-href"><img src="https://openai.com/favicon.ico" class="icon bookmark-icon"/>https://openai.com/research/video-generation-models-as-world-simulators</div></div><img src="https://images.openai.com/blob/28bcbcb2-563a-432b-bb30-d74f66a087fe/young-tiger.jpg?trim=0%2C0%2C0%2C0&amp;width=1000&amp;quality=80" class="bookmark-image"/></a></figure><p id="b15c8391-f45d-4908-b1b8-3e14a1e9556b" class="">
+</p><figure id="4414e0b5-2220-4105-bbb8-ddbcab5c71e0"><a href="https://arxiv.org/abs/2404.07771" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">An Overview of Diffusion Models: Applications, Guided Generation,...</div><div class="bookmark-description">Diffusion models, a powerful and universal generative AI technology, have achieved tremendous success in computer vision, audio, reinforcement learning, and computational biology. In these...</div></div><div class="bookmark-href"><img src="https://arxiv.org/static/browse/0.3.4/images/icons/apple-touch-icon.png" class="icon bookmark-icon"/>https://arxiv.org/abs/2404.07771</div></div><img src="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png" class="bookmark-image"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
