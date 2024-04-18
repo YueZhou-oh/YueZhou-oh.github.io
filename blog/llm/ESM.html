@@ -1,0 +1,347 @@
+<!DOCTYPE html><html><head>
+      <title>ESM</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\周阅\.vscode-insiders\extensions\shd101wyy.markdown-preview-enhanced-0.8.13\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#gnnhttpsdistillpub2021gnn-intro" class="md-toc-link"></a><p><a href="#gnnhttpsdistillpub2021gnn-intro" class="md-toc-link"></a><a href="https://distill.pub/2021/gnn-intro/">GNN</a></p>
+
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#background" class="md-toc-link">
+            <p>Background</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#modern-gnnhttpsdistillpub2021understanding-gnns" class="md-toc-link">
+            </a><p><a href="#modern-gnnhttpsdistillpub2021understanding-gnns" class="md-toc-link"></a><a href="https://distill.pub/2021/understanding-gnns/">Modern GNN</a></p>
+
+          </div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#gvp-gnnhttpsdrorlabstanfordeduimageslearning_from_protein_structurepdf" class="md-toc-link">
+            </a><p><a href="#gvp-gnnhttpsdrorlabstanfordeduimageslearning_from_protein_structurepdf" class="md-toc-link"></a><a href="https://drorlab.stanford.edu/images/learning_from_protein_structure.pdf">GVP-GNN</a></p>
+
+          </div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#meta-esm-evolutionary-scale-modelinghttpsgithubcomfacebookresearchesm" class="md-toc-link"></a><p><a href="#meta-esm-evolutionary-scale-modelinghttpsgithubcomfacebookresearchesm" class="md-toc-link"></a><a href="https://github.com/facebookresearch/esm">Meta-ESM, Evolutionary Scale Modeling</a></p>
+
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#esm-1bhttpswwwpnasorgdoi101073pnas2016239118" class="md-toc-link">
+            </a><p><a href="#esm-1bhttpswwwpnasorgdoi101073pnas2016239118" class="md-toc-link"></a><a href="https://www.pnas.org/doi/10.1073/pnas.2016239118">ESM-1b</a></p>
+
+          </div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#esm-msa-1bhttpswwwbiorxivorgcontent10110120210212430858v1" class="md-toc-link">
+            </a><p><a href="#esm-msa-1bhttpswwwbiorxivorgcontent10110120210212430858v1" class="md-toc-link"></a><a href="https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1">ESM-MSA-1b</a></p>
+
+          </div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#esm-1vhttpswwwbiorxivorgcontent10110120210709450648v1" class="md-toc-link">
+            </a><p><a href="#esm-1vhttpswwwbiorxivorgcontent10110120210709450648v1" class="md-toc-link"></a><a href="https://www.biorxiv.org/content/10.1101/2021.07.09.450648v1">ESM-1v</a></p>
+
+          </div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#esm-if1httpswwwbiorxivorgcontent10110120220410487779v1fullpdf" class="md-toc-link">
+            </a><p><a href="#esm-if1httpswwwbiorxivorgcontent10110120220410487779v1fullpdf" class="md-toc-link"></a><a href="https://www.biorxiv.org/content/10.1101/2022.04.10.487779v1.full.pdf">ESM-IF1</a></p>
+
+          </div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#esm-foldhttpswwwbiorxivorgcontent10110120220720500902v1" class="md-toc-link">
+            </a><p><a href="#esm-foldhttpswwwbiorxivorgcontent10110120220720500902v1" class="md-toc-link"></a><a href="https://www.biorxiv.org/content/10.1101/2022.07.20.500902v1">ESM-Fold</a></p>
+
+          </div>
+        </div>
+      </details>
+    
+</div>
+<h2 id="gnnhttpsdistillpub2021gnn-intro"><a href="https://distill.pub/2021/gnn-intro/">GNN</a> </h2>
+<h3 id="background">Background </h3>
+<img src="genome/gnnlayer.png" alt="gnnlayer" style="zoom:50%">
+<p>To start, let’s establish what a graph is. A graph represents the relations (edges) between a collection of entities (nodes).<br>
+To further describe each node, edge or the entire graph, we can store information in each of these pieces of the graph.<br>
+We can additionally specialize graphs by associating directionality to edges (directed, undirected).</p>
+<img src="genome/graph.png" alt="graph" style="zoom:90%">
+<p>Tasks:</p>
+<ul>
+<li>Node Classification: Classifying individual nodes.</li>
+<li>Graph Classification: Classifying entire graphs.</li>
+<li>Node Clustering: Grouping together similar nodes based on connectivity.</li>
+<li>Link Prediction: Predicting missing links.</li>
+<li>Influence Maximization: Identifying influential nodes.</li>
+</ul>
+<p>A GNN is an optimizable transformation on all attributes of the graph (nodes, edges, global-context) that preserves graph symmetries (<strong>permutation invariances</strong>).<br>
+GNNs adopt a <strong>“graph-in, graph-out”</strong> architecture meaning that these model types accept a graph as input, with information loaded into its nodes, edges and global-context, and progressively transform these embeddings, without changing the connectivity of the input graph.</p>
+<img src="genome/messagepassing.png" alt="mp" style="zoom:90%">
+<p>The design space for our GNN has many levers that can customize the model:</p>
+<ul>
+<li>The number of GNN layers, also called the <strong>depth</strong>.</li>
+<li>The dimensionality of each attribute when updated. The update function is a 1-layer MLP with a relu <strong>activation function</strong> and a <strong>layer norm</strong> for normalization of activations.</li>
+<li>The <strong>aggregation function</strong> used in pooling: max, mean or sum.</li>
+<li>The <strong>graph attributes that get updated, or styles of message passing</strong>: nodes, edges and global representation.</li>
+</ul>
+<img src="genome/multigraph.png" alt="multigraph" style="zoom:80%">
+<p>Other types of graphs</p>
+<ul>
+<li>multigraphs</li>
+<li>hypergraphs</li>
+<li>hypernodes</li>
+<li>hierarchical graphs</li>
+</ul>
+<p>The Challenges of Computation on Graphs:</p>
+<ul>
+<li>
+<p><strong>Lack of consistent structure</strong>, Graphs are extremely flexible mathematical models; but this means they lack consistent structure across instances. Consider the task of predicting whether a given chemical molecule is toxic, the following issues quickly become apparent:</p>
+<ul>
+<li>Molecules may have different numbers of atoms.</li>
+<li>The atoms in a molecule may be of different types.</li>
+<li>Each of these atoms may have different number of connections.</li>
+<li>These connections can have different strengths.</li>
+</ul>
+<p>Representing graphs in a format that can be computed over is non-trivial, and the final representation chosen often depends significantly on the actual problem.</p>
+</li>
+<li>
+<p><strong>Node-Order Equivariance</strong>, eg. The same graph labelled in two different ways.</p>
+</li>
+<li>
+<p>Scalability, Graphs can be really large! Think about social networks like Facebook and Twitter, which have over a billion users. Operating on data this large is not easy. Luckily, most naturally occuring graphs are sparse</p>
+</li>
+</ul>
+<p>Introduce operation to GNN:</p>
+<ul>
+<li>Extend convolutions to Graphs</li>
+<li>Polynomial Filter on Graphs, Polynomial Filters are Node-Order Equivariant
+<ul>
+<li>The Graph Laplacian</li>
+<li>Polynomials of Laplacian</li>
+<li>ChebNet, ChebNet was a breakthrough in learning localized filters over graphs</li>
+</ul>
+</li>
+</ul>
+<img src="genome/gcn.png" alt="gcn" style="zoom:80%">
+<h3 id="modern-gnnhttpsdistillpub2021understanding-gnns"><a href="https://distill.pub/2021/understanding-gnns/">Modern GNN</a> </h3>
+<ul>
+<li>
+<p>Embedding Computation, Message-passing forms the backbone of many GNN architectures today.</p>
+<ul>
+<li>Graph Convolutional Networks (GCN)
+<ul>
+<li>Global conv: Spectral convolutions, which is Node-Order Equivariant</li>
+</ul>
+</li>
+<li>Graph Attention Networks (GAT)</li>
+<li>Graph Sample and Aggregate (GraphSAGE)</li>
+<li>Graph Isomorphism Network (GIN)</li>
+<li>Graph Vector Perceptions (GVP)</li>
+</ul>
+<img src="genome/gattenn.png" alt="atten" style="zoom:80%">
+</li>
+</ul>
+<h3 id="gvp-gnnhttpsdrorlabstanfordeduimageslearning_from_protein_structurepdf"><a href="https://drorlab.stanford.edu/images/learning_from_protein_structure.pdf">GVP-GNN</a> </h3>
+<blockquote>
+<ul>
+<li>imputed direction 插补方向</li>
+</ul>
+</blockquote>
+<p>引入了一个新的模块，几何向量感知机(GVPs)，以取代GNN中的密集层:</p>
+<ul>
+<li>不需要通过节点与其所有邻居的相对方向来编码节点的方向，而只需要为每个节点表示一个绝对方向。</li>
+<li>标准化了整个结构的全局坐标系，允许几何特征直接传播，而无需在局部坐标之间转换。例如，空间中任意位置的表示，包括本身不是节点的点，可以通过欧几里德向量加法轻松地在图中传播。</li>
+<li>在保持标量表示法提供的旋转不变性的同时，以一种同时保留原始GNN的全部表达能力的方式执行图传播。</li>
+<li>数学证明了GVP体系结构可以逼近V的任何连续旋转和反射不变标量值函数</li>
+</ul>
+<img src="genome/gvp.png" alt="gvp" style="zoom:70%">
+<h2 id="meta-esm-evolutionary-scale-modelinghttpsgithubcomfacebookresearchesm"><a href="https://github.com/facebookresearch/esm">Meta-ESM, Evolutionary Scale Modeling</a> </h2>
+<p>ESM系列五篇文章的主线是利用蛋白质语言模型实现从蛋白序列预测蛋白质结构和功能，提出了ESM-1b、ESM-MSA-1b、ESM-1v、ESM-IF1、ESM-Fold五种基于Transformer的无监督的蛋白质语言模型。</p>
+<ul>
+<li>
+<p>ESM-1b: 第一篇《Biological structure and function emerge from scaling unsupervised learning to 250 million protein sequences 》介绍了该团队基于Transformer训练的顶尖水准(state-of-the-art)蛋白质语言模型ESM-1b，能够直接通过蛋白的氨基酸序列预测该蛋白的结构、功能等性质。</p>
+</li>
+<li>
+<p>ESM-MSA-1b: 第二篇《MSA Transformer》在ESM-1b的基础上作出改进，将模型的输入从单一蛋白质序列改为MSA矩阵，并在Transformer中加入行、列两种轴向注意力机制，对位点分别计算第个序列和第个对齐位置的影响，充分利用二维输入的优势。</p>
+</li>
+<li>
+<p>ESM-1v：第三篇《Language models enable zero-shot prediction of the effects of mutations on protein function 》中提出了ESM-1v模型，该模型与ESM-1b模型构架相同，只是预训练数据集改为UR90（ESM-1b预训练数据集为UR50）。ESM-1v为一种通用的蛋白质语言模型，能够实现蛋白质功能的zero-shot预测，即模型只需经过预训练即可应用于各种具体问题，对于特定蛋白质预测问题（例如针对特定蛋白家族）无需额外训练即可直接解决。本文中使蛋白质语言模型具有zero-shot预测能力的机制是，采<strong>用含有海量进化信息的蛋白数据库进行预训练。当所用数据库涵盖的序列足够多、足够多样(large and diverse)，那么模型就有可能从数据库中学到横跨整个进化树的序列模式，那么该模型也就很可能会在预训练阶段学习到它将要应用的家族的序列模式</strong>，迁移应用时也就无需再额外训练。</p>
+</li>
+<li>
+<p>ESM-IF1: 第四篇《Learning inverse folding from millions of predicted structures》</p>
+</li>
+<li>
+<p>ESM-Fold：第五篇《Language models of protein sequences at the scale of evolution enable accurate structure prediction》</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Shorthand</th>
+<th>esm.pretrained.</th>
+<th>Dataset</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESM-1b</td>
+<td>esm1b_t33_650M_UR50S()</td>
+<td>UR50, 12m seqs</td>
+<td>SOTA general-purpose protein language model. Can be used to predict structure, function and other protein properties directly from individual sequences. Released with Rives et al. 2019 (Dec 2020 update).</td>
+</tr>
+<tr>
+<td>ESM-MSA-1b</td>
+<td>esm_msa1b_t12_100M_UR50S()</td>
+<td>UR50 + MSA</td>
+<td>MSA Transformer language model. Can be used to extract embeddings from an MSA. Enables SOTA inference of structure. Released with Rao et al. 2021 (ICML'21 version, June 2021).</td>
+</tr>
+<tr>
+<td>ESM-1v</td>
+<td>esm1v_t33_650M_UR90S_1() ... esm1v_t33_650M_UR90S_5()</td>
+<td>UR90</td>
+<td>Language model specialized for prediction of variant effects. Enables SOTA zero-shot prediction of the functional effects of sequence variations. Same architecture as ESM-1b, but trained on UniRef90. Released with Meier et al. 2021.</td>
+</tr>
+<tr>
+<td>ESM-IF1</td>
+<td>esm_if1_gvp4_t16_142M_UR50()</td>
+<td>CATH + UR50</td>
+<td>Inverse folding model. Can be used to design sequences for given structures, or to predict functional effects of sequence variation for given structures. Enables SOTA fixed backbone sequence design. Released with Hsu et al. 2022.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>模型名称</th>
+<th>输入数据类型</th>
+<th>普适性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESM-1b</td>
+<td>single sequence</td>
+<td>family-specific</td>
+</tr>
+<tr>
+<td>ESM-MSA-1b</td>
+<td>MSA</td>
+<td>few-shot</td>
+</tr>
+<tr>
+<td>ESM-1v</td>
+<td>single sequence</td>
+<td>zero-shot</td>
+</tr>
+</tbody>
+</table>
+<h3 id="esm-1bhttpswwwpnasorgdoi101073pnas2016239118"><a href="https://www.pnas.org/doi/10.1073/pnas.2016239118">ESM-1b</a> </h3>
+<blockquote>
+<p>基因突变数据集的标签来自于临床观察, 一般是定性的标记int dtype(pathogenic, benign, uncertain)，没有准确的score</p>
+</blockquote>
+<p>Evaluation metric of unsupervised method:</p>
+<ul>
+<li>Remote Homology, 可以尝试
+<blockquote>
+<ul>
+<li>Given a protein sequence x, with final hidden representation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>h</mi><mn>1</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><mi>h</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(h1, . . . , hn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">...</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">hn</span><span class="mclose">)</span></span></span></span>, we define the embedding of the sequence tobe a vector <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span> which is the average of the hidden representations across the positions in the sequence:<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">e=\frac{1}{n}\sum_{i=1}^n h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>We can compare the similarity of two protein sequences, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">x'</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> having embeddings <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">e</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>e</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup></mrow><annotation encoding="application/x-tex">e'</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7519em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span></span></span></span> using a metric in the embedding space.</li>
+<li>We evaluate the L2 distance <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi>e</mi><mo>−</mo><msup><mi>e</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mi mathvariant="normal">∣</mi><msub><mi mathvariant="normal">∣</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">||e − e'||_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣∣</span><span class="mord mathnormal">e</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord">∣</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and the cosine distance <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>e</mi><mo separator="true">⋅</mo><msup><mi>e</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mi mathvariant="normal">/</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi>e</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mo>⋅</mo><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><msup><mi>e</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">e · e'/||e||\cdot||e'||</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mpunct">⋅</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">/∣∣</span><span class="mord mathnormal">e</span><span class="mord">∣∣</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0019em;vertical-align:-0.25em;"></span><span class="mord">∣∣</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7519em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mord">∣∣</span></span></span></span>. Additionally we evaluated the L2 distance after projecting the e vectors to the unit sphere.</li>
+</ul>
+</blockquote>
+</li>
+<li>Mutation Effect, 无法使用，没有experimental score，无法计算<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span>
+<blockquote>
+<ul>
+<li>in the protein dataset, through deep mutational scanning experiment, each amino acid sequence has a probability/score in float dtype, representing突变对蛋白质功能/活性的影响, 分数甚至可以 &gt; 1, 表示突变有助于提高蛋白质活性</li>
+<li>To fine-tune the model to predict the effect of changing a single amino acid or combination of amino acids we regress the scaled mutational effect with: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mo>∑</mo><mi>i</mi></msub><mi>l</mi><mi>o</mi><mi>g</mi><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>m</mi><mi>t</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>−</mo><mi>l</mi><mi>o</mi><mi>g</mi><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>w</mi><mi>t</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">y=\sum_i logp_i(mt(i))-logp_i(wt(i))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0497em;vertical-align:-0.2997em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.162em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">m</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">wt</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">))</span></span></span></span></li>
+<li>Where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>t</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">mt(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span> is the mutated amino acid at position <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mi>t</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">wt(i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">wt</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mclose">)</span></span></span></span> is the wildtype amino acid. The sum runs over the indices of the mutated positions.</li>
+<li>As an evaluation metric, we report the Spearman <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span> between the model’s predictions and experimentally measured values. Each column consists of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> of all sequences in test dataset.</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="esm-msa-1bhttpswwwbiorxivorgcontent10110120210212430858v1"><a href="https://www.biorxiv.org/content/10.1101/2021.02.12.430858v1">ESM-MSA-1b</a> </h3>
+<p>Model modification：</p>
+<ul>
+<li>输入为multiple sequence alignment，输入比BERT多一维，因为是multiple sequence alignment</li>
+<li>1D sequence position embedding added to each row + position embedding to each column</li>
+<li>constraining attention to operate over rows and columns</li>
+<li>预测的时候，除了待预测的sequence，需要输入other sequence to formulate MSA, 如果把整个测试集输入，数量太大，而且会影响predict效果，因为 test batch size远大于train batch size，因此提出了Random, diversity maximizing, diversity minimizing, HHFilter等下采样策略，使test batch size = train batch size</li>
+<li>下游任务时，用到了row self-attention map + column self-attention map of all layers, do little/no supervision, 每个map训练/共享一个系数，weighted sum</li>
+</ul>
+<h3 id="esm-1vhttpswwwbiorxivorgcontent10110120210709450648v1"><a href="https://www.biorxiv.org/content/10.1101/2021.07.09.450648v1">ESM-1v</a> </h3>
+<blockquote>
+<p>相似点：</p>
+<ul>
+<li>都期望通过使用large and diverse dataset，让模型预训练是学习到足够多的序列模式，即使不通过finetune，zero-shot/unsupervised方式也能实现比SOTA/traditional method更好的performance；</li>
+<li>zero-shot的方式，提出了four methods of scoring the effects of mutations using the model，与我们task3 unsupervised方式类似：
+<ul>
+<li>比较wild type和mutant type sequence经过pre-trained model得到的predict probability间的差距</li>
+<li>ESM-1v的输入是做/未做 [token mask for mutant position] 的wt/mt序列，比较的是output probability of mutant position的log-odds distance</li>
+<li>我们的输入是未做 [token mask for mutant position] 的wt/mt序列，比较的是output probability of acceptor/donor position的KL divergence</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>achieving zero-shot: 采用含有海量进化信息的蛋白数据库进行预训练。当所用数据库涵盖的序列足够多、足够多样(large and diverse)，那么模型就有可能从数据库中学到横跨整个进化树的序列模式，那么该模型也就很可能会在预训练阶段学习到它将要应用的家族的序列模式，迁移应用时也就无需再额外训练</li>
+<li>用氨基酸的<strong>保守性</strong>衡量变异的影响力，若某位置与野生型相比其他氨基酸出现的概率很低，说明蛋白序列在该位点很保守，<strong>变异可能性很低</strong>，也就<strong>说明该位点的氨基酸可能对蛋白的结构和功能有重要影响</strong>。</li>
+<li>预测序列变异对蛋白功能的影响的方法：输入含变异的序列：用[MASK]代替mutation token；模型预测将该token预测为mt/wt的概率的log-odds差值，作为socre。We introduce masks at the mutated positions and compute the score for a mutation by considering its probability relative to the wildtype amino acid
+<blockquote>
+<p>Here the sum is over the mutated positions, and the sequence input to the model is masked at every mutated position.<br>
+<span style="color: #ee7f49; font-weight: 500;">ParseError: KaTeX parse error: Undefined control sequence: \T at position 37: …_t=x_t^{mt}|x_{\̲T̲})-log p(x_t=_t…</span></p>
+</blockquote>
+</li>
+<li>使用UR90数据库，含有98million条多样的蛋白序列，数据量和数据多样性都远远大于ESM-1b和ESM-MSA-1b训练所用的UR50数据库，因此训练出的模型迁移能力更强。</li>
+</ul>
+<h3 id="esm-if1httpswwwbiorxivorgcontent10110120220410487779v1fullpdf"><a href="https://www.biorxiv.org/content/10.1101/2022.04.10.487779v1.full.pdf">ESM-IF1</a> </h3>
+<p>Predict protein sequence based on protein structure through auto-regressive training.从蛋白质骨架坐标(每个氨基酸三个原子C2N的中心坐标)中预测出它的蛋白质序列。<br>
+<img src="genome/esmif1.png" alt="esmif1" style="zoom:80%"></p>
+<ul>
+<li>在已有实验性确定的蛋白质结构的基础上(<sub>16K)，使用AlphaFold2预测的蛋白质结构(UniRef50)作为额外数据(</sub>12M)</li>
+<li>在蛋白质骨架结构数据上达到51%的原生序列复现率，对于隐蔽残基的复现率达到72%，整体上比SOTA提升了10个百分点</li>
+<li>使用Geometric Vector Perceptron(GVP)层学习向量特征的等变转换(rotation equivariant transformations of vector features)和标量特征的不变变换(rotation invariant transformations of scalar features)</li>
+<li>Use <a href="https://aclanthology.org/2020.tacl-1.5.pdf">span masking : span masking + SBO loss</a> (DNABert also adopt)</li>
+<li>zero-shot prediction evaliation metric: use the ratio between likelihoods of the mutated and wildtype sequences</li>
+</ul>
+<h3 id="esm-foldhttpswwwbiorxivorgcontent10110120220720500902v1"><a href="https://www.biorxiv.org/content/10.1101/2022.07.20.500902v1">ESM-Fold</a> </h3>
+<ul>
+<li>only need single sequence as input, while AlphaFold2 need MSA. Hence achieving quick inference, 10x speed up compared with AlphaFold2</li>
+<li>将AlphaFold2的MSA Folding Block模块替换为Tranformer来简化AlphaFold2中的Evoformer，加速ESMFold的关键原因</li>
+<li>在AlphaFold2和RoseTTAFold中使用MSA和模板会导致两个瓶颈，首先，可能需要基于CPU检索和对齐MSA和模板，这是由于AlphaFold2和RoseTTAFold不是二维序列嵌入状态，而是使用轴向注意力对应于MSA的三维内部状态进行操作，即使使用GPU，这一计算的代价也不菲；相比之下，ESMFold是一个完全端到端的序列结构预测器，可以完全在GPU上运行，无需访问任何外部数据库。</li>
+<li>虽然ESMFold速度很高，精度也不错，特别是在单序列输入的时候精度明显好于AlphaFold2；但ESMFold在多序列输入的情况下，其精度比AlphaFold2还是有差距</li>
+</ul>
+<img src="genome/esmvsalpha.jpeg" alt="esmvsalpha" stype="zoom:80">
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
