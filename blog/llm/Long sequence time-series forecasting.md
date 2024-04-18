@@ -90,9 +90,7 @@
 | 2021| ICLR|  ==Pyraformer==|  applies pyramidal attention module with inter-scale and intra-scale connections which also get a linear complexity.| 
 | 2020|  ICLR|  Reformer|  improve the efficiency of Transformers, replace dot-product attention by one that uses locality-sensitive hashing and use reversible residual layers instead of the standard residuals| 
 | 2019| NIPs|  LogTrans|  uses convolutional self-attention layers with LogSparse design to capture local information and reduce the space complexity| 
-| | | LSTMa| | 
-| | | DeepAR| | 
-| | | Prophet| | 
+
 
 - NIPs注重理论/公式分析
 - ICLR的可视化/实验分析居多
