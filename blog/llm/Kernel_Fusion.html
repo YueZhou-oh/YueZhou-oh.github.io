@@ -1,0 +1,734 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Fused Kernel</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2e3d0db6-ce11-4e6f-8d01-1e4be9c6039c" class="page sans"><header><h1 class="page-title">Fused Kernel</h1><p class="page-description"></p></header><div class="page-body"><p id="853bcfdb-f5ee-4f3a-9496-7fd09bfe53ea" class="">
+</p><nav id="25a0c03f-2f43-42cf-897b-87667932a9dd" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d250dc02-12ca-4579-8c83-614aedb9dea9">LayerNorm</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4666f7e0-e526-4f7d-9d9e-c702cae38f8d"><strong>LayerNorm 计算方法</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#61b9e44e-eec5-4ae4-bfe3-7d5c1d710acc"><strong>LayerNorm 中求方差的方法</strong></a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#44919dff-08f7-43e0-9219-18af6c0f7a83">优化计算</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2e220400-b399-4b8a-ba22-9377bfd385e0">Softmax</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6e713396-956a-4f66-851d-fea777979beb">OneFlow实现</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0a57d56a-7c5e-48ff-a761-ce284120d8f3">Pytorch实现</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c930907b-d144-4aab-8388-ae726ae858f4">Bias_GeLU</a></div></nav><p id="493ebbb5-57bd-48ee-87c0-a184cd89ba1c" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6e917fb8-84fe-45a5-bd9c-8853e3747ba9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Softmax 的优化方法也适用于 LayerNorm，LayerNorm 的数据也可以表示为 <code>(num_rows, num_cols)</code>，计算过程中对每一行的元素做 Reduce 操作求均值方差。减少对global memory的访问次数</div></figure><h2 id="d250dc02-12ca-4579-8c83-614aedb9dea9" class="">LayerNorm</h2><p id="7df1c698-94a1-4933-ba0b-2cc0dca5745b" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6fdcbe8c-2350-4d84-b7ff-1c664a3f4ea5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">transformer的layernorm计算维度：Hidden size维度</div></figure><p id="0c91786b-bf7a-495f-8ef7-9a2d32a90437" class="">众多框架均对算子做了优化，如：</p><ul id="fa95bc86-853e-48cb-ba16-9fb4d6a079af" class="bulleted-list"><li style="list-style-type:disc">NVIDIA Apex</li></ul><ul id="04c45a6e-5548-4136-a5b2-719b98c76204" class="bulleted-list"><li style="list-style-type:disc">Pytorch</li></ul><ul id="578ad75f-60f1-47a1-aeda-2be82dd59344" class="bulleted-list"><li style="list-style-type:disc">OneFlow</li></ul><p id="98253ac2-afac-4190-af8e-95b4e2b21cb5" class="">
+</p><h3 id="4666f7e0-e526-4f7d-9d9e-c702cae38f8d" class=""><strong>LayerNorm 计算方法</strong></h3><p id="172328c8-ed0a-4915-8fa2-84e56d8a797b" class="">以 PyTorch 为例，LayerNorm 的接口为:</p><p id="0efc2ec1-f54d-41b1-b295-5987edd7b60c" class=""><code>torch.nn.LayerNorm(normalized_shape, eps=1e-05, elementwise_affine=True, device=None, dtype=None)</code></p><ol type="1" id="a6e50aa3-596c-49c0-a873-f1b4f1fa6916" class="numbered-list" start="1"><li>其中 <code>input</code> 形状为：<code>[∗, normalized_shape[0], normalized_shape[1], …,normalized_shape[−1]]</code></li></ol><ol type="1" id="c9d61aa7-22bc-4590-b647-200ffb4640a5" class="numbered-list" start="2"><li>第一个参数 <code>normalized_shape</code> 只能是输入 <code>x_shape</code> 的后几维，例如 <code>x_shape</code> 为 <code>(N, C, H, W)</code>, <code>normalized_shape</code> 可以是 <code>(W)</code>， <code>(H, W)</code> ，<code>(C, H, W)</code> 或 <code>(N, C, H, W)</code>。输入 <code>x</code> 在 <code>normalized_shape</code> 这几维上求均值和方差。</li></ol><ol type="1" id="3d110973-70c5-4b27-a25e-6abe02070925" class="numbered-list" start="3"><li>第三个参数 <code>elementwise_affine</code> 代表是否要对 normalize 的结果做变换，即 normalize 的结果乘 <code>gamma</code>，加 <code>beta</code>。若 <code>elementwise_affine=True</code>，就多了两个模型参数 <code>gamma</code> 和<code>beta</code>，形状为 <code>normalized_shape</code>。</li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bf87672a-baec-45ba-ac74-a84aaf47acbd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">例如对于输入 <code>x</code> 形状为 <code>(N, C, H, W)</code>， <code>normalized_shape</code> 为 <code>(H, W)</code> 的情况，可以理解为输入 <code>x</code> 为 <code>(N*C, H*W)</code>，在 <code>N*C</code> 个行上，每行有 <code>H*W</code> 个元素，对每行的元素求均值和方差，得到 <code>N*C</code> 个 <code>mean</code> 和 <code>inv_variance</code>，再对输入按如下 LayerNorm 的计算公式计算得到 <code>y</code>。若 <code>elementwise_affine=True(default)</code> ，则有 <code>H*W</code> 个 <code>gamma（weight）</code> 和 <code>beta(bias)</code>，对每行 <code>H*W</code> 个的元素做变换。</div></figure><figure id="8f5d34e5-504b-4ace-8ffe-9fc66054dca6" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mfrac><mrow><mi>x</mi><mo>−</mo><mi>E</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><msqrt><mrow><mi>V</mi><mi>a</mi><mi>r</mi><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo><mo>+</mo><mi>ϵ</mi></mrow></msqrt></mfrac><mo>∗</mo><mi>γ</mi><mo>+</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">y=\frac {x-E[x]}{\sqrt {Var[x]+\epsilon}}*\gamma + \beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.557em;vertical-align:-1.13em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.175em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal">Va</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">ϵ</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">[</span><span class="mord mathnormal">x</span><span class="mclose">]</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.13em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05556em;">γ</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span></span></div></figure><figure id="c71043a7-bac8-4d24-afda-0a47ea4dab1c" class="image"><a href="Kernel_Fusion/Untitled.png"><img style="width:600px" src="Kernel_Fusion/Untitled.png"/></a></figure><figure id="9c15b11c-bfbe-4580-a0d4-463a3d90bafa" class="image"><a href="Kernel_Fusion/Untitled%201.png"><img style="width:762px" src="Kernel_Fusion/Untitled%201.png"/></a></figure><h3 id="61b9e44e-eec5-4ae4-bfe3-7d5c1d710acc" class=""><strong>LayerNorm 中求方差的方法</strong></h3><p id="0805dc6b-00f9-4c32-81b7-6ff9f2e54df5" class="">常见的求方差的方法有 two pass 方法、naive 方法、和 Welford 算法，本文摘录一些关键的公式和结论，详细的介绍和推导可参考：<a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Algorithms_for_calculating_variance">Wiki: Algorithms for calculating variance</a> ，和 <a href="https://link.zhihu.com/?target=https%3A//mp.weixin.qq.com/s/t0x782mDkMo-ZBVEbK8gPg">GiantPandaCV: 用Welford算法实现LN的方差更新</a></p><ul id="39535d70-da99-4e67-92db-f42376ea567d" class="bulleted-list"><li style="list-style-type:disc">two-pass方法</li></ul><p id="44c10de3-b3a8-40fa-bd92-06bc8bad3981" class="">使用的公式是：</p><figure id="c1f7e5a4-1209-4106-81a4-be3fbda6b87a" class="image"><a href="https://pic3.zhimg.com/80/v2-292bfd502d9e5eb1558a68d06fdd365e_1440w.webp"><img style="width:424px" src="https://pic3.zhimg.com/80/v2-292bfd502d9e5eb1558a68d06fdd365e_1440w.webp"/></a></figure><p id="34a78475-451e-4c62-ab19-cdc0aa87e6ba" class="">two-pass 是指这种方法需要遍历两遍数据，第一遍累加 <code>x</code> 得到均值，第二遍用上面公式计算得到方差。这种方法在 <code>n</code> 比较小时仍然是数值稳定的。</p><ul id="3551b83a-f0cd-4180-b0c7-6e10a4e63e44" class="bulleted-list"><li style="list-style-type:disc">naive方法</li></ul><p id="16108a5d-b7a6-4120-b7a2-dc7675f8fe1f" class="">使用的公式是：</p><figure id="0239f96e-4420-4157-b423-d662f8effad9" class="image"><a href="https://pic2.zhimg.com/80/v2-ac64490783716dc686e5e631668a6b21_1440w.webp"><img style="width:648px" src="https://pic2.zhimg.com/80/v2-ac64490783716dc686e5e631668a6b21_1440w.webp"/></a></figure><p id="d12e0d51-f00c-48e1-83b8-19c5aa71b415" class="">这种方法是一种 single pass 方法，在计算方差时只需要遍历一遍数据累加 <code>x</code> 的平方及累加 <code>x</code>，最后按上述公式计算得到方差。这种方法只需要遍历一遍数据，相比 two-pass 的算法，更容易达到好的性能，但是上面的 Wiki 参考链接中介绍由于 SumSquare 和 (Sum×Sum)/n 可能非常接近，可能会导致计算结果损失精度较大，因此这种方法不建议在实践中使用。</p><ul id="f31a2a63-2f0d-490c-845d-b5ff0e9f6748" class="bulleted-list"><li style="list-style-type:disc">Welford 算法使用的公式是：</li></ul><figure id="8d30dd1a-75d9-447f-aeb0-0a660562be1f" class="image"><a href="https://pic4.zhimg.com/80/v2-a72771a9d2b9ab01b3d7243d90cb2ba7_1440w.webp"><img style="width:626px" src="https://pic4.zhimg.com/80/v2-a72771a9d2b9ab01b3d7243d90cb2ba7_1440w.webp"/></a></figure><p id="0436a3be-d2dd-4d63-bd63-821179460acb" class="">Welford 算法也是一种 <mark class="highlight-yellow_background">single pass 方法(计算均值和方差时只需要遍历一遍数据)，且数值稳定性很好（n比较小时）</mark>，因此现在很多框架都采用这种方法。本文的代码中采用的也是 Welford 方法。</p><p id="09d44f16-2c1c-4c34-8beb-6b217d9ede63" class="">
+</p><h3 id="44919dff-08f7-43e0-9219-18af6c0f7a83" class="">优化计算</h3><p id="c6008f69-8ec6-473b-bf66-af9abb1ac341" class="">背景：transformer中通常对最后一维计算normalization</p><ul id="1fe899a7-14a4-42bb-bfe9-46b290f02e06" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">base：向量化访存VMA，单次instruction以更高的bits精度访问和存储数据，提高 CUDA Kernel 性能，很多 CUDA Kernel 都是bandwidth bound的，使用VMA可以减少总的指令数，减少延迟，提高带宽利用率。</mark><blockquote id="cec2e37c-7817-40a9-ac0e-33d9914bdd12" class=""><mark class="highlight-red">load and store data but do so in 64- or 128-bit widths. Using vectorized loads reduces the total number of instructions, reduces latency, and improves bandwidth utilization.</mark></blockquote></li></ul><ul id="81e9bc83-2225-486d-a784-ca6cb372c117" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">当normalized shape/hidden size不大时，充分利用shared memory保存中间的allreduce结果；根据n_col的大小决定以warp还是block为单位计算均值和方差；通过一次allreduce更新所有thread的计算结果。</mark></li></ul><ul id="1f80dc04-4768-4337-9d78-3dd682dbb290" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">使用single pass的Welford 算法计算均值和方差，减少数据遍历次数，且数值稳定性很好</mark></li></ul><p id="34fca9e1-d9ca-44d6-94eb-7e55efff3f61" class="">
+</p><figure id="54cebd20-2ec4-448e-86c0-6b61ac058280" class="image"><a href="Kernel_Fusion/Untitled%202.png"><img style="width:950px" src="Kernel_Fusion/Untitled%202.png"/></a></figure><p id="a5f96bc7-2801-487f-8349-7fbf5e58cc8e" class="">
+</p><figure id="8df5d466-da84-4946-bd0a-cb840c5cae54"><a href="https://developer.nvidia.com/blog/cuda-pro-tip-increase-performance-with-vectorized-memory-access/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">CUDA Pro Tip: Increase Performance with Vectorized Memory Access | NVIDIA Technical Blog</div><div class="bookmark-description">This post demonstrates the use of vectorized memory access in CUDA C/C++ to increase bandwidth utilization while decreasing instruction count.</div></div><div class="bookmark-href"><img src="https://developer-blogs.nvidia.com/wp-content/themes/nvidia/dist/images/favicon_300a1064.ico" class="icon bookmark-icon"/>https://developer.nvidia.com/blog/cuda-pro-tip-increase-performance-with-vectorized-memory-access/</div></div><img src="https://developer-blogs.nvidia.com/wp-content/uploads/2017/02/GPU-Pro-Tip.png" class="bookmark-image"/></a></figure><figure id="e4ff79aa-2b78-4641-a3ba-1746352a6836"><a href="https://zhuanlan.zhihu.com/p/443026261" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">CUDA优化之LayerNorm性能优化实践</div><div class="bookmark-description">撰文 | 郭冉、姚迟、郑泽康、柳俊丞2020 年末，OneFlow 发布了《 OneFlow性能优化分享：如何实现一个高效的 Softmax CUDA kernel？》，其中介绍了 OneFlow 深度优化后的 Softmax，尤其对很多框架没有考虑的 half …</div></div><div class="bookmark-href"><img src="https://static.zhihu.com/heifetz/assets/apple-touch-icon-152.81060cab.png" class="icon bookmark-icon"/>https://zhuanlan.zhihu.com/p/443026261</div></div><img src="https://pic1.zhimg.com/v2-c7c92b1bd6624c9c1e86afb737ea437f_720w.jpg?source=172ae18b" class="bookmark-image"/></a></figure><p id="7d1a09af-2ac0-4b80-8a06-7550ad0d179a" class="">
+</p><h2 id="2e220400-b399-4b8a-ba22-9377bfd385e0" class="">Softmax</h2><ul id="2b28f618-8f4e-4e35-9f56-d6af6c6a0311" class="bulleted-list"><li style="list-style-type:disc">尽管当Softmax和CrossEntropy联合使用时，其数学推导可以约简，简化计算</li></ul><ul id="ac5af165-26a7-4c59-afa2-622b0f7947af" class="bulleted-list"><li style="list-style-type:disc">但还是有很多场景会单独使用Softmax Op，如计算attention map时</li></ul><p id="fe77582b-eefa-4ca3-9d8b-b3d21e51ac99" class="">
+</p><p id="3038136c-9e46-4675-9067-891d36b62e29" class="">Naive Softmax （注：先减最大值，防止梯度爆炸？）：</p><ol type="1" id="e96538da-9300-4046-87b1-7fdb43e033c5" class="numbered-list" start="1"><li>先做一个 ReduceMax 求最大值操作，得到输入每一行的最大值；</li></ol><ol type="1" id="53dfbceb-c3f2-4736-83cd-c3511f111460" class="numbered-list" start="2"><li>然后做一个 BroadcastSub 减法操作，拿输入每一行的各点减去每一行的最大值，即常见的softmax表达式中的输入x;</li></ol><ol type="1" id="2dc74f5e-675e-4a89-9d9f-7b57ecac4c7c" class="numbered-list" start="3"><li>然后做一个 自然指数 Exp 操作，对输入每一行的各点计算指数;</li></ol><ol type="1" id="ee0b81b9-a691-4dac-80ca-62d6f672b913" class="numbered-list" start="4"><li>然后做一个 ReduceSum 求和操作，对输入每一行的所有结果求和，得到前面公式定义的 ;</li></ol><ol type="1" id="cc21c2a3-9a72-4d08-8c0e-1613d7e42348" class="numbered-list" start="5"><li>最后做一个 BroadcastDiv 除法操作， 拿输入每一行的各点的输出；</li></ol><p id="37646c28-b5b3-44f4-ad52-110a5e5f3c8d" class="">
+</p><p id="835ec050-c493-4afe-a6b9-87995c0b24e2" class="">假设输入的数据大小为<code>D</code>，<code>shape = (num_rows, num_cols)</code>, 即 <code>D = num_rows * num_cols</code>，最Navie的操作会多次访问Global memory，其中：</p><ul id="9010d240-2fa8-4fa1-aab1-e9d3cf618017" class="bulleted-list"><li style="list-style-type:disc">ReduceMax = <code>D + num_rows</code> （read 为 D， write 为 num_rows）</li></ul><ul id="15369ca6-314f-49d6-b26d-ca07f41adbcf" class="bulleted-list"><li style="list-style-type:disc">BroadcaseSub = <code>2 * D + num_rows</code> （read 为 D + num_rows，write 为 D）</li></ul><ul id="3f31590e-94af-4e94-b983-a2621996b8ce" class="bulleted-list"><li style="list-style-type:disc">Exp = <code>2 * D</code> （read 、write 均为D）</li></ul><ul id="86ad4f8e-7707-4ce9-9351-05856915ffc1" class="bulleted-list"><li style="list-style-type:disc">ReduceSum = <code>D + num_rows</code>（read 为 D， write 为 num_rows）</li></ul><ul id="aff93128-96a2-4737-8cd7-a51a3aff9ba0" class="bulleted-list"><li style="list-style-type:disc">BroadcastDive = <code>2 * D + num_rows</code> （read 为 D + num_rows， write 为 D）</li></ul><p id="0bbe53f3-c1db-43e1-9554-20ef94bb478c" class="">总共需要<code>8 * D + 4 * num_rows</code> 的访存开销。由于num_rows相比于D可以忽略，则Navie版本的Softmax CUDA Kernel需要访问至少8倍数据的显存，即： $$ Naive Softmax Kernel 有效显存带宽 &lt; 理论带宽 / 8 $$ 对于GeForce RTX™ 3090显卡，其理论带宽上限为<strong>936</strong>GB/s，那么Navie版本的Softmax CUDA Kernel利用显存带宽的上界就是936 / 8 = 117 GB/s。</p><h3 id="6e713396-956a-4f66-851d-fea777979beb" class="">OneFlow实现</h3><p id="d2b1a3d6-051a-4521-8e36-70be97253b39" class=""><mark class="highlight-red">与LayerNorm，核心思想一致，如何更高效的处理行计算，</mark>分段对 softmax 进行优化：</p><p id="88e83feb-c9b0-4b08-a659-4d4b288bbd1a" class="">(1) 一个 <strong>Warp</strong> 处理一行的计算，适用于 num_cols &lt;= 1024 情况</p><p id="2cdde6fb-4d25-480c-9683-d6e5a2032987" class="">(2) 当num_cols中等时，一个 Block 处理一行的计算，借助 Shared Memory 保存中间结果数据，1024 &lt; num_cols &lt;= 4096</p><p id="188dccb8-2a95-441a-9dd8-e0450b763d00" class="">(3) 当num_col很大时，一个 Block 处理一行的计算，不使用 Shared Memory，重复读输入 x</p><p id="b7e67c51-be33-4a90-903f-22c28f19a923" class="">(4) 向量化访存</p><p id="36a57610-b28c-4983-a56a-4b750c5c9c73" class="">
+</p><h3 id="0a57d56a-7c5e-48ff-a761-ce284120d8f3" class="">Pytorch实现</h3><p id="7a91a412-115c-492a-8e20-fd429298c606" class="">与OneFlow的前两种一致，分别对应cunn_SoftMaxForward，和softmax_warp_forward；</p><p id="18e2c15f-bf33-4e69-853e-d6cabd2f1cce" class="">
+</p><figure id="b9be5290-5297-4364-be2b-df88002eaabe" class="image"><a href="Kernel_Fusion/Untitled%203.png"><img style="width:644px" src="Kernel_Fusion/Untitled%203.png"/></a></figure><figure id="21fbd67a-52c3-40c5-988c-21120ba9067f"><a href="https://zhuanlan.zhihu.com/p/341059988" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">如何实现一个高效的Softmax CUDA kernel？——OneFlow 性能优化分享</div><div class="bookmark-description">撰文 ｜ 郭冉Softmax操作是深度学习模型中最常用的操作之一。在深度学习的分类任务中，网络最后的分类器往往是Softmax + CrossEntropy的组合： 尽管当Softmax和CrossEntropy联合使用时，其数学推导可以约简，但还…</div></div><div class="bookmark-href"><img src="https://static.zhihu.com/heifetz/assets/apple-touch-icon-152.81060cab.png" class="icon bookmark-icon"/>https://zhuanlan.zhihu.com/p/341059988</div></div><img src="https://picx.zhimg.com/v2-0079316e5a4905a798b27e13f2f1e4bc_720w.jpg?source=172ae18b" class="bookmark-image"/></a></figure><figure id="248b7520-5613-45a8-9655-7de7ba5255d1"><a href="https://zhuanlan.zhihu.com/p/546697260" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">CUDA编程入门之激活函数Softmax</div><div class="bookmark-description">上一篇： CUDA编程入门之激活函数Swish定义Softmax函数常在神经网络输出层充当激活函数，将输出层的值通过激活函数映射到0-1区间，将神经元输出构造成概率分布，用于多分类问题中，Softmax激活函数映射值越大，则…</div></div><div class="bookmark-href"><img src="https://static.zhihu.com/heifetz/assets/apple-touch-icon-152.81060cab.png" class="icon bookmark-icon"/>https://zhuanlan.zhihu.com/p/546697260</div></div><img src="https://pic1.zhimg.com/v2-90b75c5d6ebc3c472c127e00702d8a43_720w.jpg?source=172ae18b" class="bookmark-image"/></a></figure><p id="6680c4f4-bbc0-41fa-a8f3-9d429ee46d66" class="">
+</p><h2 id="c930907b-d144-4aab-8388-ae726ae858f4" class="">Bias_GeLU</h2><p id="536e615e-e324-4528-a8d1-c682a441a5d1" class="">不同的框架对激活函数的实现可能不完全一样，主要原因是从<mark class="highlight-red">优化前向反向计算量与复杂度、优化内存访问频率的带宽利用率、提升数值计算结果稳定性角度</mark>考虑。</p><p id="26ca5ee0-415e-41f6-8da8-3e592814ef4e" class="">例如，GeLU的实现：</p><ul id="e05c7e01-0bd2-43af-a468-d7df6cbbb390" class="bulleted-list"><li style="list-style-type:disc">原始：<figure id="a2f0e31f-d292-4e9e-8c68-a27556c5defa" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mi>E</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.5</mn><mo>∗</mo><mi>x</mi><mo>∗</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>T</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">(</mo><msqrt><mrow><mn>2</mn><mi mathvariant="normal">/</mi><mi>π</mi></mrow></msqrt><mo>∗</mo><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>0.044715</mn><mo>∗</mo><msup><mi>x</mi><mn>3</mn></msup><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">GELU(x)=0.5*x*(1+Tanh(\sqrt{2/\pi}*(x+0.044715*x^3)))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">GE</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2561em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">anh</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9839em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">2/</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span><span style="top:-2.9439em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2561em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.044715</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)))</span></span></span></span></span></div></figure></li></ul><ul id="ed405bc1-d7f4-4505-8fba-e58cd74b3309" class="bulleted-list"><li style="list-style-type:disc">BERT：</li></ul><figure id="62bf52e3-5b02-4a5b-85af-11ae90a3c16e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mi>E</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.5</mn><mo>∗</mo><mi>x</mi><mo>∗</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>t</mi><mi>o</mi><mi>r</mi><mi>c</mi><mi>h</mi><mi mathvariant="normal">.</mi><mi>e</mi><mi>r</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mi mathvariant="normal">/</mi><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mspace linebreak="newline"></mspace><mi>t</mi><mi>o</mi><mi>r</mi><mi>c</mi><mi>h</mi><mi mathvariant="normal">.</mi><mi>e</mi><mi>r</mi><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>2</mn><msqrt><mi>π</mi></msqrt></mfrac><msubsup><mo>∫</mo><mn>0</mn><mi>x</mi></msubsup><msup><mi>e</mi><mrow><mo>−</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></msup><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">GELU(x)=0.5*x*(1+torch.erf(x/\sqrt 2))\\
+torch.erf(x)=\frac {2} {\sqrt {\pi}}\int_0^x e^{-t^2}dt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">GE</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0.5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2061em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">orc</span><span class="mord mathnormal">h</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mord">/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9561em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;">2</span></span><span style="top:-2.9161em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0839em;"><span></span></span></span></span></span><span class="mclose">))</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">orc</span><span class="mord mathnormal">h</span><span class="mord">.</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3443em;vertical-align:-0.93em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.3097em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8003em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span><span style="top:-2.7603em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2397em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4143em;"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span style="top:-3.8129em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9119em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.0369em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></span></div></figure><p id="e3d08bf3-d0f1-4e4e-8d28-1559d413c1b1" class="">与Layernorm和softmax，也是<mark class="highlight-red">涉及在高维的hidden size维度求指数、求和的操作</mark>，fused kernel思路一致。</p><ul id="c143fe5b-aafe-47d1-bf93-882c4b630bdb" class="bulleted-list"><li style="list-style-type:disc">根据维度选择不同的并行粒度计算</li></ul><ul id="16d8eb05-619b-4c96-8914-fe20d63901f2" class="bulleted-list"><li style="list-style-type:disc">利用shared memory提高访存速度</li></ul><ul id="938fa782-9a1d-4fe1-8b9c-67dd4accd5ec" class="bulleted-list"><li style="list-style-type:disc">VMA</li></ul><p id="24da7719-85f4-4566-a24d-297f196dc44b" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
